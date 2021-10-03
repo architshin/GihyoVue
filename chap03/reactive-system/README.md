@@ -1,4 +1,4 @@
-# reactive
+# reactive-system
 
 ## Project setup
 ```
