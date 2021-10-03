@@ -9,14 +9,14 @@ export default defineComponent({
 	setup() {
 		// 半径の初期値を乱数で取得。
 		const radiusInit = Math.round(Math.random() * 10);
-		// 円周率定数を用意。
-		const PI = 3.14;
+		// 円周率のテンプレート変数を用意。
+		const PI = ref(3.14);
 		// 半径のテンプレート変数を用意。
 		const radius = ref(radiusInit);
 		// 円の面積の算出値を用意。
 		const area = computed(
 			function() {
-				return radius.value * radius.value * PI;
+				return radius.value * radius.value * PI.value;
 			}
 		);
 		// const area = computed(
