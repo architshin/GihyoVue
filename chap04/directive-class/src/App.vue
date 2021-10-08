@@ -35,7 +35,7 @@ export default defineComponent({
 				bgColorBlue: true
 			});
 		const computedStyles = computed(
-			function(): {textColorRed: boolean, bgColorBlue: boolean} {
+			function(): {textColorRed: boolean; bgColorBlue: boolean;} {
 				//乱数を利用して0か1を生成(textColorRed用)。
 				const randText = Math.round(Math.random());
 				//textColorRedプロパティの値を表す変数をtrueで用意。
