@@ -34,7 +34,6 @@ export default defineComponent({
 				textColorRed: false,
 				bgColorBlue: true
 			});
-
 		const computedStyles = computed(
 			function(): {textColorRed: boolean, bgColorBlue: boolean} {
 				//乱数を利用して0か1を生成(textColorRed用)。
