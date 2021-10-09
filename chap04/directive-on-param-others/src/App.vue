@@ -12,7 +12,7 @@ export default defineComponent({
 		const pBgColor = ref("white");
 		const onPClick = function(bgColor: string): void {
 			pBgColor.value = bgColor;
-		}
+		};
 		return {
 			pBgColor,
 			onPClick

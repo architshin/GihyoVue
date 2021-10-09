@@ -14,7 +14,7 @@ export default defineComponent({
 		const onButtonClick = function(): void {
 			const rand = Math.round(Math.random() * 10);
 			randValue.value = String(rand);
-		}
+		};
 		return {
 			randValue,
 			onButtonClick,

@@ -15,7 +15,7 @@ export default defineComponent({
 		const onImgMousemove = function(event: MouseEvent): void {
 			mousePointerX.value = event.offsetX;
 			mousePointerY.value = event.offsetY;
-		}
+		};
 		return {
 			mousePointerX,
 			mousePointerY,
