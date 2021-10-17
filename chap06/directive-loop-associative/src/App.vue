@@ -1,7 +1,7 @@
 <template>
 	<ul>
 		<li
-			v-for="(cocktailName, id) in cocktailList" 
+			v-for="(cocktailName, id) in cocktailList"
 			v-bind:key="'cocktailList' + id">
 			IDが{{id}}のカクテルは{{cocktailName}}
 		</li>
@@ -21,7 +21,7 @@ import {defineComponent, ref} from "vue";
 
 export default defineComponent({
 	setup() {
-		const cocktailListInit: {[key: number]: string} = {
+		const cocktailListInit: {[key: number]: string;} = {
 			2345: "ホワイトレディ",
 			4412: "ブルーハワイ",
 			6792: "ニューヨーク"
