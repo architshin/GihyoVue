@@ -4,7 +4,7 @@
 		<ul>
 			<li
 				v-for="cocktailItem in cocktailDataList"
-				v-bind:key="'cocktailDataList' + cocktailItem.id">
+				v-bind:key="cocktailItem.id">
 				{{cocktailItem.name}}の値段は{{cocktailItem.price}}円
 			</li>
 		</ul>
@@ -35,8 +35,12 @@ export default defineComponent({
 		const cocktailDataList = ref(cocktailDataListInit);
 		const cocktail1500 = computed(
 			function(): Cocktail[] {
+				//配列のfilter()メソッドを使って新たな配列を生成。
 				const newList = cocktailDataList.value.filter(
+					//filter()メソッドの絞り込み条件関数。
+					//引数は配列の各要素であるCocktailオブジェクト。
 					function(cocktailItem: Cocktail): boolean {
+						//値段が1500かどうかの結果を戻り値とする。
 						return cocktailItem.price == 1500;
 				});
 				return newList;
