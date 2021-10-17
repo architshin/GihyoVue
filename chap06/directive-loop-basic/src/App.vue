@@ -20,7 +20,9 @@ import {defineComponent, ref} from "vue";
 
 export default defineComponent({
 	setup() {
-		const cocktailList = ref(["ホワイトレディ", "ブルーハワイ", "ニューヨーク"]);
+		const cocktailListLinit: string[] = ["ホワイトレディ", "ブルーハワイ", "ニューヨーク"];
+		const cocktailList = ref(cocktailListLinit);
+		// const cocktailList = ref(["ホワイトレディ", "ブルーハワイ", "ニューヨーク"]);
 		return {
 			cocktailList
 		};
