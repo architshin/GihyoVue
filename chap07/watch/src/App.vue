@@ -18,7 +18,7 @@ export default defineComponent({
 		const selectedCocktailId = ref(0);
 		//選択されたカクテル情報を表示するリアクティブな変数を用意。
 		const priceMsg = ref("");
-		//watchEffectを設定。
+		//watchを設定。
 		watch(selectedCocktailId,
 			() => {
 				//選択されたカクテルデータを取得。
