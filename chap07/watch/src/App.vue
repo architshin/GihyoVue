@@ -28,14 +28,15 @@ export default defineComponent({
 				cocktailDataListInit.set(6792, {id: 6792, name: "ニューヨーク", price: 1100});
 				cocktailDataListInit.set(8429, {id: 8429, name: "マティーニ", price: 1500});
 				const cocktail = cocktailDataListInit.get(selectedCocktailId.value);
+				//未選択な状態のメッセージを用意。
+				let msg = "カクテルは未選択です。";
 				//選択カクテルデータが存在しているなら…
 				if(cocktail != undefined) {
-					//選択されたカクテルの名前と金額を表示する文字列をpriceMsgに設定。
-					priceMsg.value = `選択されたカクテルは${cocktail.name}で、価格は${cocktail.price}円です。`;
+					//選択されたカクテルの名前と金額を表示する文字列を生成。
+					msg = `選択されたカクテルは${cocktail.name}で、価格は${cocktail.price}円です。`;
 				}
-				else {
-					priceMsg.value = "カクテルは未選択です。";
-				}
+				//表示文字列をpriceMsgに設定。
+				priceMsg.value = msg;
 			}
 		);
 		return {
