@@ -1,51 +1,62 @@
 <template>
-	<p>現在時刻: {{timeStr}}</p>
-	<p>現在時刻(ref): {{timeStrRef}}</p>
+	<p>縦が{{height}}、横が{{width}}の長方形の面積は{{area}}</p>
+	<button v-on:click="change">値を変更</button>
 </template>
 
 <script lang="ts">
-import {defineComponent, ref, onBeforeMount, onMounted, onBeforeUpdate, onUpdated} from "vue";
+import {defineComponent, ref, computed, onBeforeMount, onMounted, onBeforeUpdate, onUpdated, onRenderTracked, onRenderTriggered} from "vue";
 
 export default defineComponent({
 	setup() {
-		const now = new Date();
-		const nowStr = now.toLocaleTimeString();
-		let timeStr = nowStr;
-		const timeStrRef = ref(nowStr);
-		function changeTime() {
-			const newTime = new Date();
-			const newTimeStr = newTime.toLocaleTimeString();
-			timeStr = newTimeStr
-			timeStrRef.value = newTimeStr;
+		const heightInit = Math.round(Math.random() * 10);
+		const widthInit = Math.round(Math.random() * 10);
+		const height = ref(heightInit);
+		const width = ref(widthInit);
+		const area = computed(
+			() => {
+				return height.value * width.value;
+			}
+		);
+		const change = () => {
+			height.value = Math.round(Math.random() * 10);
+			width.value = Math.round(Math.random() * 10);
 		}
-		setInterval(changeTime, 1000);
 		onBeforeMount(
 			() => {
-				console.log(`onBeforeMount called: ${timeStrRef.value}`);
+				console.log(`onBeforeMount called: ${height.value} * ${width.value}`);
 			}
 		);
 		onMounted(
 			() => {
-				console.log(`onMounted called: ${timeStrRef.value}`);
+				console.log(`onMounted called: ${height.value} * ${width.value}`);
 			}
 		);
 		onBeforeUpdate(
 			() => {
-				console.log(`onBeforeUpdate called: ${timeStrRef.value}`);
+				console.log(`onBeforeUpdate called: ${height.value} * ${width.value}`);
 			}
 		);
 		onUpdated(
 			() => {
-				console.log(`onUpdated called: ${timeStrRef.value}`);
+				console.log(`onUpdated called: ${height.value} * ${width.value}`);
+			}
+		);
+		onRenderTracked(
+			() => {
+				console.log(`onRenderTracked called: ${height.value} * ${width.value}`);
+			}
+		);
+		onRenderTriggered(
+			() => {
+				console.log(`onRenderTriggered called: ${height.value} * ${width.value}`);
 			}
 		);
 		return {
-			timeStr,
-			timeStrRef
+			height,
+			width,
+			area,
+			change
 		};
 	}
 });
 </script>
-
-<style>
-</style>
