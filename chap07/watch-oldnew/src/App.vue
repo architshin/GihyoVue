@@ -20,7 +20,7 @@ export default defineComponent({
 		const priceMsg = ref("");
 		//watchを設定。
 		watch(selectedCocktailId,
-			(newVal, oldVal) => {
+			(newVal: number, oldVal: number): void => {
 				//選択されたカクテルデータを取得。
 				const cocktailDataListInit = new Map<number, Cocktail>();
 				cocktailDataListInit.set(2345, {id: 2345, name: "ホワイトレディ", price: 1200});

@@ -24,7 +24,7 @@ export default defineComponent({
 		const selectedCocktailId = ref(0);
 		//リアクティブな算出値priceMsgを用意。
 		const priceMsg = computed(
-			() => {
+			(): string => {
 				//未選択な状態のメッセージを用意。
 				let msg = "カクテルは未選択です。";
 				//選択されたカクテルデータをリストから取得。
