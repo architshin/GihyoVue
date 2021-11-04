@@ -23,6 +23,9 @@ export default defineComponent({
 			this.height = Math.round(Math.random() * 10);
 			this.width = Math.round(Math.random() * 10);
 		}
+	},
+	updated(): void {
+		console.log(`beforeMount called: ${this.height} * ${this.width}`);
 	}
 });
 </script>
