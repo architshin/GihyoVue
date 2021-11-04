@@ -4,7 +4,7 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, ref, computed, onBeforeMount, onMounted, onBeforeUpdate, onUpdated, onRenderTracked, onRenderTriggered} from "vue";
+import {defineComponent, ref, computed, onBeforeMount, onMounted, onBeforeUpdate, onUpdated, onRenderTracked, onRenderTriggered, DebuggerEvent} from "vue";
 
 export default defineComponent({
 	setup() {
@@ -13,42 +13,44 @@ export default defineComponent({
 		const height = ref(heightInit);
 		const width = ref(widthInit);
 		const area = computed(
-			() => {
+			(): number => {
 				return height.value * width.value;
 			}
 		);
-		const change = () => {
+		const change = (): void => {
 			height.value = Math.round(Math.random() * 10);
 			width.value = Math.round(Math.random() * 10);
 		}
 		onBeforeMount(
-			() => {
-				console.log(`onBeforeMount called: ${height.value} * ${width.value}`);
+			(): void => {
+				console.log(`beforeMount called: ${height.value} * ${width.value}`);
 			}
 		);
 		onMounted(
-			() => {
-				console.log(`onMounted called: ${height.value} * ${width.value}`);
+			(): void => {
+				console.log(`mounted called: ${height.value} * ${width.value}`);
 			}
 		);
 		onBeforeUpdate(
-			() => {
-				console.log(`onBeforeUpdate called: ${height.value} * ${width.value}`);
+			(): void => {
+				console.log(`beforeUpdate called: ${height.value} * ${width.value}`);
 			}
 		);
 		onUpdated(
-			() => {
-				console.log(`onUpdated called: ${height.value} * ${width.value}`);
+			(): void => {
+				console.log(`updated called: ${height.value} * ${width.value}`);
 			}
 		);
 		onRenderTracked(
-			() => {
-				console.log(`onRenderTracked called: ${height.value} * ${width.value}`);
+			(event: DebuggerEvent): void => {
+				console.log(`renderTracked called: ${height.value} * ${width.value}`);
+				console.log(event);
 			}
 		);
 		onRenderTriggered(
-			() => {
-				console.log(`onRenderTriggered called: ${height.value} * ${width.value}`);
+			(event: DebuggerEvent): void => {
+				console.log(`renderTriggered called: ${height.value} * ${width.value}`);
+				console.log(event);
 			}
 		);
 		return {
