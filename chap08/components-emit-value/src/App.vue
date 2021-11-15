@@ -38,8 +38,11 @@ export default defineComponent({
 			}
 		);
 		const onIncrementPoint = (id: number): void => {
+			//処理関数のidに該当する会員情報オブジェクトを取得。
 			const member = memberList.value.get(id);
+			//会員情報オブジェクトが存在するなら…
 			if(member != undefined) {
+				//ポイントをインクリメント。
 				member.points++;
 			}
 		}
