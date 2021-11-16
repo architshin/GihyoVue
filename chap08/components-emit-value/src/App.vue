@@ -31,7 +31,7 @@ export default defineComponent({
 		const totalPoints = computed(
 			(): number => {
 				let total = 0;
-				for(const [id, member] of memberList.value) {
+				for(const member of memberList.value.values()) {
 					total += member.points;
 				}
 				return total;
