@@ -19,7 +19,7 @@ export default defineComponent({
 		OneSection
 	},
 	setup() {
-		const tag = ref("<p>Appで用意したpタグ</p>");
+		const tag = ref("<p>連絡がつきません。</p>");
 		const tagComplex = ref(`<ul><li v-for="problem in problems" v-bind:key="problem">{{problem}}</li></ul>`);
 		return {
 			tag,
