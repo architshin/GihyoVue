@@ -1,7 +1,7 @@
 <template>
 	<section>
 		<h2>Slotの利用</h2>
-		<OneSection v-bind:name="name">
+		<OneSection v-bind:name="taro">
 			<p>連絡がつきません。</p>
 		</OneSection>
 	</section>
@@ -17,9 +17,9 @@ export default defineComponent({
 		OneSection
 	},
 	setup() {
-		const name = ref("田中太郎");
+		const taro = ref("田中太郎");
 		return {
-			name
+			taro
 		}
 	}
 });
