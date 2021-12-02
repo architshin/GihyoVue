@@ -2,8 +2,8 @@
 	<h1>会員管理</h1>
 	<nav id="breadcrumbs">
 		<ul>
-			<li><router-link to="/">TOP</router-link></li>
-			<li><router-link to="/member/memberList">会員リスト</router-link></li>
+			<li><router-link v-bind:to="{name: 'Top'}">TOP</router-link></li>
+			<li><router-link v-bind:to="{name: 'MemberList'}">会員リスト</router-link></li>
 			<li>会員情報追加</li>
 		</ul>
 	</nav>
@@ -18,7 +18,7 @@
 					<label for="addId">ID&nbsp;</label>
 				</dt>
 				<dd>
-					<input type="number" id="addId" v-model="id" required>
+					<input type="number" id="addId" v-model.number="id" required>
 				</dd>
 				<dt>
 					<label for="addName">名前&nbsp;</label>
@@ -30,7 +30,7 @@
 					<label for="addPoint">保有ポイント&nbsp;</label>
 				</dt>
 				<dd>
-					<input type="number" id="addPoint" v-model="point" required>
+					<input type="number" id="addPoints" v-model.number="points" required>
 				</dd>
 				<dt>
 					<label for="addNote">備考</label>
@@ -42,19 +42,34 @@
 			<button type="submit">登録</button>
 		</form>
 	</section>
-	</section>
 </template>
 
 <script lang="ts">
-import {defineComponent, inject} from "vue";
+import {defineComponent, inject, reactive, toRefs} from "vue";
+import {useRouter} from "vue-router";
 import {Member} from "../../interfaces";
 
 export default defineComponent({
-	name: "MemberList",
+	name: "MemberAdd",
 	setup() {
+		const router = useRouter();
 		const memberList = inject("memberList") as Map<number, Member>;
+		const member: Member =reactive(
+			{
+				id: 0,
+				name: "",
+				email: "",
+				points: 0,
+				note: ""
+			}
+		);
+		const onAdd = (): void => {
+			memberList.set(member.id, member);
+			router.push({name: "MemberList"});
+		};
 		return {
-			memberList
+			...toRefs(member),
+			onAdd
 		};
 	}
 });

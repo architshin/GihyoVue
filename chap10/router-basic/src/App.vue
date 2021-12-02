@@ -23,6 +23,10 @@ export default defineComponent({
 </script>
 
 <style>
+main {
+	border: blue 1px solid;
+	padding: 10px;
+}
 #breadcrumbs ul li {
 	display: inline;
 	list-style-type: none;

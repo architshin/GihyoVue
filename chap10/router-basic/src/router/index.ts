@@ -21,16 +21,16 @@ const routes: Array<RouteRecordRaw> = [
 			return import("../views/member/MemberAdd.vue");
 		}
 	},
-	// {
-	// 	path: "/dept/detail/:id",
-	// 	name: "DeptDetail",
-	// 	component: () => {
-	// 		return import("../views/dept/DeptDetail.vue");
-	// 	},
-	// 	props: (routes) => {
-	// 		return {id: Number(routes.params.id)};
-	// 	}
-	// }
+	{
+		path: "/member/detail/:id",
+		name: "MemberDetail",
+		component: () => {
+			return import("../views/member/MemberDetail.vue");
+		},
+		props: (routes) => {
+			return {id: Number(routes.params.id)};
+		}
+	}
 ]
 
 const router = createRouter({
