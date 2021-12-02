@@ -7,6 +7,7 @@
 		</ul>
 	</nav>
 	<section>
+		<h2>会員リスト</h2>
 		<p>
 			新規登録は<router-link v-bind:to="{name: 'MemberAdd'}">こちら</router-link>から
 		</p>
