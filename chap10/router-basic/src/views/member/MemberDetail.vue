@@ -38,7 +38,7 @@ export default defineComponent({
 	},
 	setup(props) {
 		const memberList = inject("memberList") as Map<number, Member>;
-		const member = memberList.get(props.id);
+		const member = memberList.get(props.id) as Member;
 		const localNote = computed(
 			(): string => {
 				let localNote = "--";
