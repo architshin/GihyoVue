@@ -7,7 +7,10 @@
 	</nav>
 	<section>
 		<p>
-			<router-link v-bind:to="{name: 'MemberList'}">会員管理はこちら</router-link>
+			<!-- <router-link to="/member/memberList"> -->
+			<router-link v-bind:to="{name: 'MemberList'}">
+				会員管理はこちら
+			</router-link>
 		</p>
 	</section>
 </template>

@@ -15,13 +15,6 @@ const routes: Array<RouteRecordRaw> = [
 		}
 	},
 	{
-		path: "/member/add",
-		name: "MemberAdd",
-		component: () => {
-			return import("../views/member/MemberAdd.vue");
-		}
-	},
-	{
 		path: "/member/detail/:id",
 		name: "MemberDetail",
 		component: () => {
@@ -29,6 +22,13 @@ const routes: Array<RouteRecordRaw> = [
 		},
 		props: (routes) => {
 			return {id: Number(routes.params.id)};
+		}
+	},
+	{
+		path: "/member/add",
+		name: "MemberAdd",
+		component: () => {
+			return import("../views/member/MemberAdd.vue");
 		}
 	}
 ]
