@@ -21,7 +21,10 @@ const routes: Array<RouteRecordRaw> = [
 			return import("../views/member/MemberDetail.vue");
 		},
 		props: (routes) => {
-			return {id: Number(routes.params.id)};
+			const idNum = Number(routes.params.id);
+			return {
+				id: idNum
+			};
 		}
 	},
 	{

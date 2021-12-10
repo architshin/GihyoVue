@@ -2,8 +2,16 @@
 	<h1>会員管理</h1>
 	<nav id="breadcrumbs">
 		<ul>
-			<li><router-link v-bind:to="{name: 'Top'}">TOP</router-link></li>
-			<li><router-link v-bind:to="{name: 'MemberList'}">会員リスト</router-link></li>
+			<li>
+				<router-link v-bind:to="{name: 'Top'}">
+					TOP
+				</router-link>
+			</li>
+			<li>
+				<router-link v-bind:to="{name: 'MemberList'}">
+					会員リスト
+				</router-link>
+			</li>
 			<li>会員詳細情報</li>
 		</ul>
 	</nav>

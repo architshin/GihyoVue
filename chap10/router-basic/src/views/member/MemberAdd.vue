@@ -27,6 +27,12 @@
 					<input type="text" id="addName" v-model="name" required>
 				</dd>
 				<dt>
+					<label for="addEmail">メールアドレス&nbsp;</label>
+				</dt>
+				<dd>
+					<input type="email" id="addEmail" v-model="email" required>
+				</dd>
+				<dt>
 					<label for="addPoint">保有ポイント&nbsp;</label>
 				</dt>
 				<dd>
@@ -64,8 +70,10 @@ export default defineComponent({
 			}
 		);
 		const onAdd = (): void => {
+			// console.log(member);
 			memberList.set(member.id, member);
 			router.push({name: "MemberList"});
+			// router.push({name: "MemberDetail", params: {id: member.id}});
 		};
 		return {
 			...toRefs(member),
