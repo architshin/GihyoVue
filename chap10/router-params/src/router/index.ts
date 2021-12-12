@@ -41,6 +41,23 @@ const routes: Array<RouteRecordRaw> = [
 		component: () => {
 			return import("../views/ParamsViewer.vue");
 		}
+	},
+	{
+		path: "/member/go",
+		name: "Go",
+		redirect: {
+			name: "Repeatable0Params"
+		}
+	},
+	{
+		path: "/member/goDynamic/:id",
+		name: "GoDynamic",
+		redirect: (to) =>{
+			return {
+				name: "Repeatable0Params",
+				params: {id: to.params.id} 
+			}
+		}
 	}
 ]
 

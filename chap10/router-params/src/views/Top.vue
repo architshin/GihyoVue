@@ -25,6 +25,10 @@
 			<router-link v-bind:to="{name: 'RegexpParams', params: {id: 98765}}">正規表現チェックパラメータ(正)</router-link><br>
 			<router-link v-bind:to="{name: 'RegexpParams', params: {id: 1234}}">正規表現チェックパラメータ(誤)</router-link><br>
 		</p>
+		<p>
+			<router-link v-bind:to="{name: 'Go'}">静的リダイレクト</router-link><br>
+			<router-link v-bind:to="{name: 'GoDynamic', params: {id: 55164}}">動的リダイレクト</router-link><br>
+		</p>
 	</section>
 </template>
 
