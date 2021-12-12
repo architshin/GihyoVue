@@ -18,7 +18,7 @@
 
 <script lang="ts">
 import {defineComponent, ref, inject, computed, watchEffect} from "vue";
-import {useRoute} from "vue-router";
+import {useRoute, onBeforeRouteUpdate} from "vue-router";
 import {Member} from "../../interfaces";
 
 export default defineComponent({
@@ -27,13 +27,19 @@ export default defineComponent({
 		const route = useRoute();
 		const memberList = inject("memberList") as Map<number, Member>;
 		let id = Number(route.params.id);
-		let member = ref(memberList.get(id) as Member);
-		watchEffect(
-			() => {
-				id = Number(route.params.id);
+		const member = ref(memberList.get(id) as Member);
+		onBeforeRouteUpdate(
+			(to, from) => {
+				id = Number(to.params.id);
 				member.value = memberList.get(id) as Member;
 			}
 		);
+		// watchEffect(
+		// 	() => {
+		// 		id = Number(route.params.id);
+		// 		member.value = memberList.get(id) as Member;
+		// 	}
+		// );
 		const localNote = computed(
 			(): string => {
 				let localNote = "--";
