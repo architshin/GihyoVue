@@ -33,7 +33,7 @@
 					<input type="email" id="addEmail" v-model="email" required>
 				</dd>
 				<dt>
-					<label for="addPoint">保有ポイント&nbsp;</label>
+					<label for="addPoints">保有ポイント&nbsp;</label>
 				</dt>
 				<dd>
 					<input type="number" id="addPoints" v-model.number="points" required>
