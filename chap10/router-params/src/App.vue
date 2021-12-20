@@ -1,0 +1,42 @@
+<template>
+	<header>
+		<h1>ルートパラメータサンプル</h1>
+	</header>
+	<main>
+		<router-view/>
+	</main>
+</template>
+
+<script lang="ts">
+import {defineComponent} from "vue";
+
+export default defineComponent({
+	name: "App",
+});
+</script>
+
+<style>
+main {
+	border: blue 1px solid;
+	padding: 10px;
+}
+#breadcrumbs ul li {
+	display: inline;
+	list-style-type: none;
+}
+#breadcrumbs {
+	margin-left: 0px;
+}
+#breadcrumbs ul {
+	padding-left: 0px;
+}
+#breadcrumbs ul .current {
+	color: red;
+}
+#breadcrumbs ul li:before {
+	content: " > ";
+}
+#breadcrumbs ul li:first-child:before {
+	content: none;
+}
+</style>
