@@ -1,47 +1,35 @@
 <template>
-	<header>
-		<h1>Vuexサンプル</h1>
-	</header>
-	<main>
-		<router-view/>
-	</main>
+	<p>現在のポイント: {{points}}</p>
+	<p>現在のポイントさらに倍: {{doublePoints}}</p>
+	<button v-on:click="onIncrementClick">加算</button>
 </template>
 
 <script lang="ts">
-import {defineComponent} from "vue";
+import {defineComponent, computed} from "vue";
 import {useStore} from "vuex";
 
 export default defineComponent({
 	name: "App",
 	setup() {
 		const store = useStore();
-		store.commit("INIT_LIST");
+		const points = computed(
+			(): number => {
+				return store.state.points;
+			}
+		);
+		const doublePoints = computed(
+			(): number => {
+				return store.getters.getDoublePoints;
+			}
+		);
+		const onIncrementClick = () => {
+			store.commit("INCREMENT_POINTS");
+		}
+		return {
+			points,
+			doublePoints,
+			onIncrementClick
+		}
 	}
 });
 </script>
-
-<style>
-main {
-	border: blue 1px solid;
-	padding: 10px;
-}
-#breadcrumbs ul li {
-	display: inline;
-	list-style-type: none;
-}
-#breadcrumbs {
-	margin-left: 0px;
-}
-#breadcrumbs ul {
-	padding-left: 0px;
-}
-#breadcrumbs ul .current {
-	color: red;
-}
-#breadcrumbs ul li:before {
-	content: " > ";
-}
-#breadcrumbs ul li:first-child:before {
-	content: none;
-}
-</style>
