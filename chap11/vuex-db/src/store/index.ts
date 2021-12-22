@@ -82,8 +82,8 @@ export const store = createStore<State>({
 			_database = await getDatabase();
 			const promise = new Promise<boolean>(
 				(resolve, reject) => {
-					const transaction = _database.transaction("members", "readonly");
-					const objectStore = transaction.objectStore("member");
+					const transaction = _database.transaction("members", "readwrite");
+					const objectStore = transaction.objectStore("members");
 					const memberList = new Map<number, Member>();
 					objectStore.openCursor().onsuccess = (event) => {
 						const request = event.target as IDBRequest;
@@ -93,6 +93,14 @@ export const store = createStore<State>({
 							const member = cursor.value as Member;
 							memberList.set(id, member);
 							cursor.continue;
+						}
+						else {
+							let member: Member = {id: 33456, name: "田中太郎", email: "bow@example.com", points: 35, note: "ちょ〜イケメン。"};
+							memberList.set(33456, member);
+							objectStore.put(member);
+							member = {id: 47783, name: "鈴木二郎", email: "mue@example.com", points: 53};
+							memberList.set(47783, member);	
+							objectStore.put(member);
 						}
 					}
 					context.commit(MutationsList.CHANGE_LIST, memberList);
