@@ -15,8 +15,12 @@
 		<p>
 			新規登録は<router-link v-bind:to="{name: 'MemberAdd'}">こちら</router-link>から
 		</p>
-		<section>
+		<p v-if="isLoading">
+			データ取得中…
+		</p>
+		<section v-else>
 			<ul>
+				<li v-if="isEmptyList">会員情報は存在しません。</li>
 				<li
 					v-for="[id, member] in memberList"
 					v-bind:key="id">
@@ -32,19 +36,32 @@
 <script lang="ts">
 import {defineComponent, computed} from "vue";
 import {Member} from "../../interfaces";
-import {useStore} from "../../store/index"
+import {useStore, ActionsList} from "../../store/index"
 
 export default defineComponent({
 	name: "MemberList",
 	setup() {
 		const store = useStore();
+		store.dispatch(ActionsList.PREPARE_MEMBER_LIST);
 		const memberList = computed(
 			(): Map<number, Member> => {
 				return store.state.memberList;
 			}
 		);
+		const isLoading = computed(
+			(): boolean => {
+				return store.state.isLoading;
+			}
+		);
+		const isEmptyList = computed(
+			(): boolean => {
+				return memberList.value.size == 0;
+			}
+		);
 		return {
-			memberList
+			memberList,
+			isLoading,
+			isEmptyList
 		};
 	}
 });

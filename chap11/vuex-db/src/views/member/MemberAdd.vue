@@ -71,8 +71,19 @@ export default defineComponent({
 			}
 		);
 		const onAdd = (): void => {
-			store.dispatch(ActionsList.INSERT_MEMBER, member);
-			router.push({name: "MemberList"});
+			const result = store.dispatch(ActionsList.INSERT_MEMBER, member);
+			result.then(
+				(result: boolean) => {
+					if(result) {
+						router.push({name: "MemberList"});
+					}
+				}
+			);
+			result.catch(
+				(error) => {
+					console.log("データ登録失敗", error);
+				}
+			);
 		};
 		return {
 			...toRefs(member),

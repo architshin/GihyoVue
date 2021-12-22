@@ -9,14 +9,9 @@
 
 <script lang="ts">
 import {defineComponent} from "vue";
-import {ActionsList, useStore} from "./store/index"
 
 export default defineComponent({
-	name: "App",
-	setup() {
-		const store = useStore();
-		store.dispatch(ActionsList.PREPARE_MEMBER_LIST);
-	}
+	name: "App"
 });
 </script>
 
