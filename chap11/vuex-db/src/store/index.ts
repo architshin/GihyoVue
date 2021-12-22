@@ -1,6 +1,6 @@
 import {InjectionKey} from "vue";
 import {createStore, Store, useStore as baseUseStore} from "vuex";
-import {Member} from "../interfaces";
+import {Member} from "@/interfaces";
 
 export enum MutationsList {
 	CHANGE_LOADING_STATUS = "changeLoadingStatus",
@@ -34,20 +34,20 @@ async function getDatabase(): Promise<IDBDatabase> {
 			}
 			else {
 				const request = window.indexedDB.open("vuexdb", 1);
-				request.onerror = (event) => {
-					console.log("ERROR: DBをオープンできません。", event);
-					reject("ERROR");
+				request.onupgradeneeded = (event) => {
+					const target = event.target as IDBRequest;
+					const database = target.result as IDBDatabase;
+					database.createObjectStore("members",{keyPath: "id"});
 				};
 				request.onsuccess = (event) => {
 					const target = event.target as IDBRequest;
 					_database = target.result;
 					resolve(_database);
-				}
-				request.onupgradeneeded = (event) => {
-					const target = event.target as IDBRequest;
-					const database = target.result as IDBDatabase;
-					database.createObjectStore("members",{keyPath: "id"});
-				}
+				};
+				request.onerror = (event) => {
+					console.log("ERROR: DBをオープンできません。", event);
+					reject(new Error("ERROR: DBをオープンできません。"));
+				};
 			}
 		}
 	);
@@ -80,20 +80,21 @@ export const store = createStore<State>({
 	},
 	actions: {
 		async [ActionsList.PREPARE_MEMBER_LIST](context): Promise<boolean> {
-			await getDatabase();
+			const database = await getDatabase();
 			const promise = new Promise<boolean>(
 				(resolve, reject) => {
-					const transaction = _database.transaction("members", "readonly");
+					const transaction = database.transaction("members", "readonly");
 					const objectStore = transaction.objectStore("members");
 					const memberList = new Map<number, Member>();
-					objectStore.openCursor().onsuccess = (event) => {
-						const request = event.target as IDBRequest;
-						const cursor = request.result as IDBCursorWithValue;
+					const request = objectStore.openCursor();
+					request.onsuccess = (event) => {
+						const target = event.target as IDBRequest;
+						const cursor = target.result as IDBCursorWithValue;
 						if(cursor) {
 							const id = cursor.key as number;
 							const member = cursor.value as Member;
 							memberList.set(id, member);
-							cursor.continue;
+							cursor.continue();
 						}
 					}
 					transaction.oncomplete = () => {
@@ -102,8 +103,8 @@ export const store = createStore<State>({
 						resolve(true);
 					}
 					transaction.onerror = (event) => {
-						console.log("ERROR: データ取得に失敗", event);
-						reject(false);
+						console.log("ERROR: データ取得に失敗。", event);
+						reject(new Error("ERROR: データ取得に失敗。"));
 					}
 				}
 			);
@@ -113,18 +114,18 @@ export const store = createStore<State>({
 			const memberAdd: Member =  {
 				...member
 			};
-			await getDatabase();
+			const database = await getDatabase();
 			const promise = new Promise<boolean>(
 				(resolve, reject) => {
-					const transaction = _database.transaction("members", "readwrite");
+					const transaction = database.transaction("members", "readwrite");
 					const objectStore = transaction.objectStore("members");
 					objectStore.put(memberAdd);
 					transaction.oncomplete = () => {
 						resolve(true);
 					}
 					transaction.onerror = (event) => {
-						console.log("ERROR: データ登録に失敗", event);
-						reject(false);
+						console.log("ERROR: データ登録に失敗。", event);
+						reject(new Error("ERROR: データ登録に失敗。"));
 					}
 				}
 			);

@@ -35,8 +35,8 @@
 
 <script lang="ts">
 import {defineComponent, computed} from "vue";
-import {Member} from "../../interfaces";
-import {useStore, ActionsList} from "../../store/index"
+import {Member} from "@/interfaces";
+import {useStore, ActionsList} from "@/store/index"
 
 export default defineComponent({
 	name: "MemberList",
