@@ -23,7 +23,7 @@ export default defineComponent({
 			}
 		);
 		const onIncrementClick = () => {
-			store.commit("INCREMENT_POINTS");
+			store.commit("incrementPoints");
 		}
 		return {
 			points,

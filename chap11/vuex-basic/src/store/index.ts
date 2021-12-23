@@ -5,12 +5,12 @@ export default createStore({
 		points: 0
 	},
 	getters: {
-		getDoublePoints(state) {
+		getDoublePoints(state): number {
 			return state.points * 2;
 		}
 	},
 	mutations: {
-		INCREMENT_POINTS(state) {
+		incrementPoints(state): void {
 			state.points++;
 		}
 	},
