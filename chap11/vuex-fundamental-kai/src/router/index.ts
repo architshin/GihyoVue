@@ -1,5 +1,5 @@
 import {createRouter, createWebHistory, RouteRecordRaw} from "vue-router";
-import AppTop from "../views/AppTop.vue";
+import AppTop from "@/views/AppTop.vue";
 
 const routes: Array<RouteRecordRaw> = [
 	{

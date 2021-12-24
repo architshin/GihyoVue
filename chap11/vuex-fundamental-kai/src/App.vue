@@ -9,7 +9,7 @@
 
 <script lang="ts">
 import {defineComponent} from "vue";
-import {MutationsList, useStore} from "./store/index"
+import {MutationsList, useStore} from "@/store/index"
 
 export default defineComponent({
 	name: "App",

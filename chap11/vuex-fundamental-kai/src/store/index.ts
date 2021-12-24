@@ -1,10 +1,10 @@
 import {InjectionKey} from "vue";
 import {createStore, Store, useStore as baseUseStore} from "vuex";
-import {Member} from "../interfaces";
+import {Member} from "@/interfaces";
 
 export enum MutationsList {
-	INIT_LIST = "INIT_LIST",
-	ADD_MEMBER = "ADD_MEMBER"
+	INIT_LIST = "initList",
+	ADD_MEMBER = "addMember"
 }
 
 export interface State {
@@ -22,7 +22,7 @@ export const store = createStore<State>({
 		memberList: new Map<number, Member>()
 	},
 	getters: {
-		getById: (state) => {
+		getById(state) {
 			return (id: number): Member => {
 				const member = state.memberList.get(id) as Member;
 				return member;

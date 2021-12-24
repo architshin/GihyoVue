@@ -34,8 +34,8 @@
 
 <script lang="ts">
 import {defineComponent, computed} from "vue";
-import {Member} from "../../interfaces";
-import {useStore} from "../../store/index"
+import {Member} from "@/interfaces";
+import {useStore} from "@/store/index"
 
 export default defineComponent({
 	name: "MemberDetail",
@@ -49,8 +49,7 @@ export default defineComponent({
 		const store = useStore();
 		const member = computed(
 			(): Member => {
-				const member = store.getters.getById(props.id);
-				return member;
+				return store.getters.getById(props.id);
 			}
 		);
 		const localNote = computed(
