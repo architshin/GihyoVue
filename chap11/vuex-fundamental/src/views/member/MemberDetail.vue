@@ -49,8 +49,7 @@ export default defineComponent({
 		const store = useStore();
 		const member = computed(
 			(): Member => {
-				const member = store.getters.getById(props.id);
-				return member;
+				return store.getters.getById(props.id);
 			}
 		);
 		const localNote = computed(

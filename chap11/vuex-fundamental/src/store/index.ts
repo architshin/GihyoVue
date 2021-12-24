@@ -6,11 +6,11 @@ export default createStore({
 		memberList: new Map<number, Member>()
 	},
 	getters: {
-		getById: (state) => {
+		getById(state) {
 			return (id: number): Member => {
 				const member = state.memberList.get(id) as Member;
 				return member;
-			}
+			};
 		}
 	},
 	mutations: {
