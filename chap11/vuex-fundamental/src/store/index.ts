@@ -1,5 +1,5 @@
 import {createStore} from "vuex";
-import {Member} from "../interfaces";
+import {Member} from "@/interfaces";
 
 export default createStore({
 	state: {

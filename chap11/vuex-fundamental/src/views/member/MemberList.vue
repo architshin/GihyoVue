@@ -32,7 +32,7 @@
 <script lang="ts">
 import {defineComponent, computed} from "vue";
 import {useStore} from "vuex";
-import {Member} from "../../interfaces";
+import {Member} from "@/interfaces";
 
 export default defineComponent({
 	name: "MemberList",

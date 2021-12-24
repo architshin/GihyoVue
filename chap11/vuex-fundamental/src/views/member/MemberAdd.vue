@@ -54,7 +54,7 @@
 import {defineComponent, reactive, toRefs} from "vue";
 import {useRouter} from "vue-router";
 import {useStore} from "vuex";
-import {Member} from "../../interfaces";
+import {Member} from "@/interfaces";
 
 export default defineComponent({
 	name: "MemberAdd",
