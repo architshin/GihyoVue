@@ -15,7 +15,7 @@ export default defineComponent({
 	name: "App",
 	setup() {
 		const store = useStore();
-		store.commit("INIT_LIST");
+		store.commit("initList");
 	}
 });
 </script>

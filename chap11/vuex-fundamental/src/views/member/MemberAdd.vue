@@ -71,7 +71,7 @@ export default defineComponent({
 			}
 		);
 		const onAdd = (): void => {
-			store.commit("ADD_MEMBER", member);
+			store.commit("addMember", member);
 			router.push({name: "MemberList"});
 		};
 		return {
