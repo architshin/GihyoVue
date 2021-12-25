@@ -17,6 +17,7 @@
 		</p>
 		<section>
 			<ul>
+				<li v-if="isEmptyList">会員情報は存在しません。</li>
 				<li
 					v-for="[id, member] in memberList"
 					v-bind:key="id">
@@ -31,20 +32,27 @@
 
 <script lang="ts">
 import {defineComponent, computed} from "vue";
-import {Member} from "../../interfaces";
-import {useStore} from "../../store/index"
+import {useStore, ActionsList} from "@/store/index"
+import {Member} from "@/interfaces";
 
 export default defineComponent({
 	name: "MemberList",
 	setup() {
 		const store = useStore();
+		store.dispatch(ActionsList.PREPARE_MEMBER_LIST);
 		const memberList = computed(
 			(): Map<number, Member> => {
 				return store.state.memberList;
 			}
 		);
+		const isEmptyList = computed(
+			(): boolean => {
+				return memberList.value.size == 0;
+			}
+		);
 		return {
-			memberList
+			memberList,
+			isEmptyList
 		};
 	}
 });

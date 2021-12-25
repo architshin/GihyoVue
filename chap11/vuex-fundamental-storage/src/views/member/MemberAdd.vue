@@ -53,8 +53,8 @@
 <script lang="ts">
 import {defineComponent, reactive, toRefs} from "vue";
 import {useRouter} from "vue-router";
-import {Member} from "../../interfaces";
-import {ActionsList, useStore} from "../../store/index"
+import {ActionsList, useStore} from "@/store/index"
+import {Member} from "@/interfaces";
 
 export default defineComponent({
 	name: "MemberAdd",
