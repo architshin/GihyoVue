@@ -17,7 +17,7 @@ export function useStore() {
 	return baseUseStore(key)
 }
 
-export const store = createStore<State>({
+export default createStore<State>({
 	state: {
 		memberList: new Map<number, Member>()
 	},
