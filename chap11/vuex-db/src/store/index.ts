@@ -15,7 +15,7 @@ export enum ActionsList {
 
 export interface State {
 	memberList: Map<number, Member>;
-	isLoading: boolean
+	isLoading: boolean;
 }
 
 export const key: InjectionKey<Store<State>> = Symbol();
@@ -41,7 +41,7 @@ async function getDatabase(): Promise<IDBDatabase> {
 				};
 				request.onsuccess = (event) => {
 					const target = event.target as IDBRequest;
-					_database = target.result;
+					_database = target.result as IDBDatabase;
 					resolve(_database);
 				};
 				request.onerror = (event) => {
@@ -80,29 +80,47 @@ export const store = createStore<State>({
 	},
 	actions: {
 		async [ActionsList.PREPARE_MEMBER_LIST](context): Promise<boolean> {
+			//データベースオブジェクトを取得する。
 			const database = await getDatabase();
 			const promise = new Promise<boolean>(
 				(resolve, reject) => {
+					//トランザクションオブジェクトを取得する。
 					const transaction = database.transaction("members", "readonly");
+					//membersオブジェクトストアを取得する。
 					const objectStore = transaction.objectStore("members");
+					//空のmemberListを生成。
 					const memberList = new Map<number, Member>();
+					//membersオブジェクトストアの全データを取得。
 					const request = objectStore.openCursor();
+					//データ取得が成功した場合の処理を登録。
 					request.onsuccess = (event) => {
+						//カーソルオブジェクトを取得。
 						const target = event.target as IDBRequest;
 						const cursor = target.result as IDBCursorWithValue;
+						//カーソルが存在すれば…
 						if(cursor) {
+							//カーソルからキーデータを取得。
 							const id = cursor.key as number;
+							//カーソルから値オブジェクトを取得。
 							const member = cursor.value as Member;
+							//memberListに格納。
 							memberList.set(id, member);
+							//次のデータに同じ処理を実行。
 							cursor.continue();
 						}
 					}
+					//トランザクションが成功した場合の処理を登録。
 					transaction.oncomplete = () => {
+						//ステートにmemberListを格納。
 						context.commit(MutationsList.CHANGE_LIST, memberList);
+						//ステートのisLoadingをfalseに変更。
 						context.commit(MutationsList.CHANGE_LOADING_STATUS, false);
+						//非同期処理成功。Promise内の戻り値をtrueに。
 						resolve(true);
 					}
+					//トランザクションが失敗した場合の処理を登録。
 					transaction.onerror = (event) => {
+						//非同期処理失敗。エラーメッセージを格納。
 						console.log("ERROR: データ取得に失敗。", event);
 						reject(new Error("ERROR: データ取得に失敗。"));
 					}
@@ -111,19 +129,28 @@ export const store = createStore<State>({
 			return promise;
 		},
 		async [ActionsList.INSERT_MEMBER](context, member: Member): Promise<boolean> {
+			//memberオブジェクト生成。
 			const memberAdd: Member =  {
 				...member
 			};
+			//データベースオブジェクトを取得する。
 			const database = await getDatabase();
 			const promise = new Promise<boolean>(
 				(resolve, reject) => {
+					//トランザクションオブジェクトを取得する。
 					const transaction = database.transaction("members", "readwrite");
+					//membersオブジェクトストアを取得する。
 					const objectStore = transaction.objectStore("members");
+					//データ登録。
 					objectStore.put(memberAdd);
+					//トランザクションが成功した場合の処理を登録。
 					transaction.oncomplete = () => {
+						//非同期処理成功。Promise内の戻り値をtrueに。
 						resolve(true);
 					}
+					//トランザクションが失敗した場合の処理を登録。
 					transaction.onerror = (event) => {
+						//非同期処理失敗。エラーメッセージを格納。
 						console.log("ERROR: データ登録に失敗。", event);
 						reject(new Error("ERROR: データ登録に失敗。"));
 					}

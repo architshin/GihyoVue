@@ -48,20 +48,20 @@ export default defineComponent({
 				return store.state.memberList;
 			}
 		);
-		const isLoading = computed(
-			(): boolean => {
-				return store.state.isLoading;
-			}
-		);
 		const isEmptyList = computed(
 			(): boolean => {
 				return memberList.value.size == 0;
 			}
 		);
+		const isLoading = computed(
+			(): boolean => {
+				return store.state.isLoading;
+			}
+		);
 		return {
 			memberList,
-			isLoading,
-			isEmptyList
+			isEmptyList,
+			isLoading
 		};
 	}
 });

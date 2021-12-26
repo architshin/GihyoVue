@@ -71,15 +71,15 @@ export default defineComponent({
 			}
 		);
 		const onAdd = (): void => {
-			const result = store.dispatch(ActionsList.INSERT_MEMBER, member);
-			result.then(
+			const promise = store.dispatch(ActionsList.INSERT_MEMBER, member);
+			promise.then(
 				(result: boolean) => {
 					if(result) {
 						router.push({name: "MemberList"});
 					}
 				}
 			);
-			result.catch(
+			promise.catch(
 				(error) => {
 					console.log("データ登録失敗", error);
 				}
