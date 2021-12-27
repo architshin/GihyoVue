@@ -68,7 +68,5 @@ export default createStore<State>({
 			sessionStorage.setItem("memberList", memberListJSONStr);
 			// console.log(`INSERT_MEMBER: ${memberListJSONStr}`);
 		}
-	},
-	modules: {
 	}
 });

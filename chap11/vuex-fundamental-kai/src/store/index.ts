@@ -39,7 +39,5 @@ export default createStore<State>({
 		}
 	},
 	actions: {
-	},
-	modules: {
 	}
 });

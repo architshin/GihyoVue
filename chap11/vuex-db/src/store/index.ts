@@ -158,7 +158,5 @@ export default createStore<State>({
 			);
 			return promise;
 		}
-	},
-	modules: {
 	}
 });
