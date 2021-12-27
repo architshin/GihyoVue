@@ -1,4 +1,4 @@
-# vuex-fundamental-storage
+# vuex-db
 
 ## Project setup
 ```

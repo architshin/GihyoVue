@@ -54,7 +54,7 @@ async function getDatabase(): Promise<IDBDatabase> {
 	return promise;
 }
 
-export const store = createStore<State>({
+export default createStore<State>({
 	state: {
 		memberList: new Map<number, Member>(),
 		isLoading: true

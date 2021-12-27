@@ -1,5 +1,5 @@
 {
-  "name": "vuex-fundamental-storage",
+  "name": "vuex-db",
   "version": "0.1.0",
   "private": true,
   "scripts": {
