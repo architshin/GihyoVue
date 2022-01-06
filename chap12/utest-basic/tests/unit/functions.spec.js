@@ -4,30 +4,33 @@ describe(
 	"functions.tsのdivideTwoNums()関数のテスト",
 	() => {
 		test(
-			"単純な割り算の場合",
+			"単純な割り算の場合のテスト",
 			() => {
 				const num1 = 6;
 				const num2 = 3;
-				const ans = divideTwoNums(num1, num2);
-				expect(ans).toBe(2);
+				const actual = divideTwoNums(num1, num2);
+				const expected = 2;
+				expect(actual).toBe(expected);
 			}
 		);
 		test(
-			"分子が0の場合",
+			"分子が0の場合のテスト",
 			() => {
 				const num1 = 0;
 				const num2 = 3;
-				const ans = divideTwoNums(num1, num2);
-				expect(ans).toBe(0);
+				const actual = divideTwoNums(num1, num2);
+				const expected = 0;
+				expect(actual).toBe(expected);
 			}
 		);
 		test(
-			"分母が0の場合",
+			"分母が0の場合のテスト",
 			() => {
 				const num1 = 6;
 				const num2 = 0;
-				const ans = divideTwoNums(num1, num2);
-				expect(ans).toBe(Infinity);
+				const actual = divideTwoNums(num1, num2);
+				const expected = Infinity;
+				expect(actual).toBe(expected);
 			}
 		);
 	}
