@@ -1,9 +1,9 @@
 <template>
 	<p>
-		<input type="number" id="num1" v-model="num1">
+		<input type="number" data-testid="num1" v-model="num1">
 		÷
-		<input type="number" id="num2" v-model="num2">
-		=<span id="ans">{{ans}}</span>
+		<input type="number" data-testid="num2" v-model="num2">
+		=<span data-testid="ans">{{ans}}</span>
 	</p>
 </template>
 

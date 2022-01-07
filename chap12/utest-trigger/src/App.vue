@@ -1,9 +1,9 @@
 <template>
 	<p>
 		隠し領域を
-		<button id="showButton" v-on:click="onShowButtonClick">表示</button>
+		<button data-testid="showButton" v-on:click="onShowButtonClick">表示</button>
 	</p>
-	<p v-if="isVisible" id="invisible">表示されました!</p>
+	<p v-if="isVisible" data-testid="invisible">表示されました!</p>
 </template>
 
 <script lang="ts">
