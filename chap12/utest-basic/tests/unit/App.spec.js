@@ -8,7 +8,7 @@ describe(
 			"初期値でのpタグの内容テスト",
 			() => {
 				const wrapper = mount(App);
-				const actual = wrapper.find("p").text();
+				const actual = wrapper.get("p").text();
 				const expected = "6÷3=2";
 				expect(actual).toBe(expected);
 			}
