@@ -32,7 +32,7 @@ export default defineComponent({
 			(): number => {
 				let total = 0;
 				memberList.value.forEach(
-					(member, id) => {
+					(member: Member, id: number): void => {
 						total += member.points;
 					}
 				);
