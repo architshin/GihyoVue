@@ -1,4 +1,4 @@
-# utest-props
+# utest-components
 
 ## Project setup
 ```
