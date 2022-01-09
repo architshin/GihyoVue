@@ -5,7 +5,7 @@ describe(
 	"App.vueのテスト",
 	() => {
 		test(
-			"初期値でのpタグの内容テスト",
+			"初期値での表示内容テスト",
 			() => {
 				const wrapper = mount(App);
 				const actual = wrapper.get("p").text();

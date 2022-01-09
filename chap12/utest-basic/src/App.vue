@@ -4,6 +4,7 @@
 
 <script lang="ts">
 import {defineComponent, ref, computed} from "vue";
+import {divideTwoNums} from "@/functions";
 
 export default defineComponent({
 	name: "App",
@@ -12,7 +13,7 @@ export default defineComponent({
 		const num2 = ref(3);
 		const ans = computed(
 			(): number => {
-				return num1.value / num2.value;
+				return divideTwoNums(num1.value, num2.value);
 			}
 		);
 		return {
