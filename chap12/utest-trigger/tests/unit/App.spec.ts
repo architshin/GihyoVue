@@ -13,6 +13,18 @@ describe(
 				expect(actual).toBe(expected);
 			}
 		);
+		// test(
+		// 	"初期状態(隠し領域非表示)のテスト2",
+		// 	() => {
+		// 		const wrapper = mount(App);
+		// 		const actualExists = wrapper.find(`[data-testid="invisible2"]`).exists();
+		// 		const expectedExists = true;
+		// 		expect(actualExists).toBe(expectedExists);
+		// 		const actualVisible = wrapper.find(`[data-testid="invisible2"]`).isVisible();
+		// 		const expectedVisible = false;
+		// 		expect(actualVisible).toBe(expectedVisible);
+		// 	}
+		// );
 		test(
 			"表示ボタンをクリックした場合のテスト",
 			async () => {
