@@ -5,7 +5,7 @@ describe(
 	"OneMember.vueのテスト",
 	() => {
 		test(
-			"Noteデータがある場合のPropsのテスト",
+			"備考データがある場合のプロップスのテスト",
 			() => {
 				const propsData = {
 					id: 22458,
@@ -15,16 +15,18 @@ describe(
 					note: "すばらしい!"
 				};
 				const wrapper = mount(OneMember, {props: propsData});
-				const actualHtml = wrapper.html();
-				expect(actualHtml).toContain(String(propsData.id));
-				expect(actualHtml).toContain(propsData.name);
-				expect(actualHtml).toContain(propsData.email);
-				expect(actualHtml).toContain(String(propsData.points));
-				expect(actualHtml).toContain(propsData.note);
+				const actualText = wrapper.text();
+				// console.log(actualText);
+				// console.log(wrapper.html());
+				expect(actualText).toContain(String(propsData.id));
+				expect(actualText).toContain(propsData.name);
+				expect(actualText).toContain(propsData.email);
+				expect(actualText).toContain(String(propsData.points));
+				expect(actualText).toContain(propsData.note);
 			}
 		);
 		test(
-			"Noteデータがない場合のPropsのテスト",
+			"備考データがない場合のプロップスのテスト",
 			() => {
 				const propsData = {
 					id: 55148,
@@ -33,17 +35,17 @@ describe(
 					points: 300
 				};
 				const wrapper = mount(OneMember, {props: propsData});
-				const actualHtml = wrapper.html();
-				expect(actualHtml).toContain(String(propsData.id));
-				expect(actualHtml).toContain(propsData.name);
-				expect(actualHtml).toContain(propsData.email);
-				expect(actualHtml).toContain(String(propsData.points));
-				expect(actualHtml).toContain("--");
+				const actualText = wrapper.text();
+				expect(actualText).toContain(String(propsData.id));
+				expect(actualText).toContain(propsData.name);
+				expect(actualText).toContain(propsData.email);
+				expect(actualText).toContain(String(propsData.points));
+				expect(actualText).toContain("--");
 			}
 		);
 		test(
-			"Emitのテスト",
-			() => {
+			"［ポイント加算］ボタンクリックのテスト（エミットのテスト）",
+			async () => {
 				const propsData = {
 					id: 22458,
 					name: "中野三郎",
@@ -52,8 +54,9 @@ describe(
 					note: "すばらしい!"
 				};
 				const wrapper = mount(OneMember, {props: propsData});
-				wrapper.get("button").trigger("click");
+				await wrapper.get("button").trigger("click");
 				const incrementPointEvent = wrapper.emitted("incrementPoint");
+				console.log(incrementPointEvent);
 				expect(incrementPointEvent).toHaveLength(1);
 				const expectedIncrementPointEvent = [[propsData.id]];
 				expect(incrementPointEvent).toEqual(expectedIncrementPointEvent);
