@@ -56,7 +56,7 @@ describe(
 				const wrapper = mount(OneMember, {props: propsData});
 				await wrapper.get("button").trigger("click");
 				const incrementPointEvent = wrapper.emitted("incrementPoint");
-				console.log(incrementPointEvent);
+				// console.log(incrementPointEvent);
 				expect(incrementPointEvent).toHaveLength(1);
 				const expectedIncrementPointEvent = [[propsData.id]];
 				expect(incrementPointEvent).toEqual(expectedIncrementPointEvent);

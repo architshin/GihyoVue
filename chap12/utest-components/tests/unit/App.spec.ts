@@ -16,9 +16,9 @@ describe(
 						stubs: stubData
 					}
 				});
-				const actualHTML = wrapper.html();
+				const actualText = wrapper.text();
 				const expected = "全会員の保有ポイントの合計: 88";
-				expect(actualHTML).toContain(expected);
+				expect(actualText).toContain(expected);
 			}
 		);
 		test(
@@ -34,9 +34,9 @@ describe(
 				});
 				const oneMemberComponent = wrapper.findComponent(OneMember);
 				await oneMemberComponent.vm.$emit("incrementPoint", 33456);
-				const actualHTML = wrapper.html();
+				const actualText = wrapper.text();
 				const expected = "全会員の保有ポイントの合計: 89";
-				expect(actualHTML).toContain(expected);
+				expect(actualText).toContain(expected);
 			}
 		);
 	}
