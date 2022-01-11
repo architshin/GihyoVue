@@ -8,30 +8,30 @@ describe(
 		test(
 			"合計点数表示のテスト",
 			() => {
-				const stubData = {
-					OneMember: true
-				};
-				const wrapper = mount(App, {
+				const options = {
 					global: {
-						stubs: stubData
+						stubs: {
+							OneMember: true
+						}
 					}
-				});
+				};
+				const wrapper = mount(App, options);
 				const actualText = wrapper.text();
 				const expected = "全会員の保有ポイントの合計: 88";
 				expect(actualText).toContain(expected);
 			}
 		);
 		test(
-			"Emitメソッドのテスト",
+			"エミットメソッドのテスト",
 			async () => {
-				const stubData = {
-					OneMember: true
-				};
-				const wrapper = mount(App, {
+				const options = {
 					global: {
-						stubs: stubData
+						stubs: {
+							OneMember: true
+						}
 					}
-				});
+				};
+				const wrapper = mount(App, options);
 				const oneMemberComponent = wrapper.findComponent(OneMember);
 				await oneMemberComponent.vm.$emit("incrementPoint", 33456);
 				const actualText = wrapper.text();
