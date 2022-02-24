@@ -2,7 +2,7 @@ import {defineStore} from "pinia";
 import type {Member} from "@/interfaces";
 
 interface State {
-	memberList: Map<number, Member>
+	memberList: Map<number, Member>;
 }
 
 export const useMembersStore = defineStore({
