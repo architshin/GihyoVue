@@ -10,16 +10,29 @@ interface Props {
 const props = defineProps<Props>();
 
 const weatherStore = useWeatherStore();
-const selectedCity = computed(
-	(): City => {
-		return weatherStore.getSelectedCity(props.id);
+weatherStore.recieveWeatherInfo(props.id);
+const isLoading = computed(
+	(): boolean => {
+		return weatherStore.isLoding;
 	}
 );
-
+const selectedCity = computed(
+	(): City => {
+		return weatherStore.selectedCity;
+	}
+);
+const weatherDescription = computed(
+	(): string => {
+		return weatherStore.weatherDescription;
+	}
+);
 </script>
 
 <template>
-	<section>
+	<p v-if="isLoading">読み込み中…</p>
+	<section v-else>
 		<h2>{{selectedCity.name}}の天気</h2>
+		<p>{{weatherDescription}}</p>
 	</section>
+	<p>リストに<RouterLink v-bind:to="{name: 'CityList'}">戻る</RouterLink></p>
 </template>
