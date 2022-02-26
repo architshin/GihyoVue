@@ -29,7 +29,7 @@ const weatherDescription = computed(
 </script>
 
 <template>
-	<p v-if="isLoading">読み込み中…</p>
+	<p v-if="isLoading">データ取得中…</p>
 	<section v-else>
 		<h2>{{selectedCity.name}}の天気</h2>
 		<p>{{weatherDescription}}</p>

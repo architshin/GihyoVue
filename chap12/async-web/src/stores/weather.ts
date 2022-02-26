@@ -71,6 +71,7 @@ export const useWeatherStore = defineStore({
 			const response = await fetch(urlFull);
 			//取得したデータを非同期でJSONに変換。
 			const weatherInfoJSON = await response.json();
+			// console.log(weatherInfoJSON);
 			//お天気情報JSONから天気データを取得し、ステートに格納。
 			const weatherArray = weatherInfoJSON.weather;
 			const weather = weatherArray[0];
@@ -79,4 +80,4 @@ export const useWeatherStore = defineStore({
 			this.isLoding = false;
 		}
 	}
-})
+});

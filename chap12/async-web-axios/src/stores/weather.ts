@@ -70,8 +70,10 @@ export const useWeatherStore = defineStore({
 			const urlFull = `${weatherinfoUrl}?${queryParams}`;
 			//URLに非同期でアクセスしてデータを取得。
 			const response = await axios.get(urlFull);
+			// console.log(response);
 			//取得したデータからJSONデータを取得。
 			const weatherInfoJSON = response.data;
+			// console.log(weatherInfoJSON);
 			//お天気情報JSONから天気データを取得し、ステートに格納。
 			const weatherArray = weatherInfoJSON.weather;
 			const weather = weatherArray[0];
