@@ -9,7 +9,7 @@ export interface City {
 interface State {
 	cityList: Map<string, City>;
 	selectedCity: City;
-	isLoding: boolean;
+	isLoading: boolean;
 	weatherDescription: string;
 }
 
@@ -22,7 +22,7 @@ export const useWeatherStore = defineStore({
 				name: "",
 				q: ""
 			},
-			isLoding: true,
+			isLoading: true,
 			weatherDescription: ""
 		};
 	},
@@ -78,8 +78,8 @@ export const useWeatherStore = defineStore({
 			const weatherArray = weatherInfoJSON.weather;
 			const weather = weatherArray[0];
 			this.weatherDescription = weather.description;
-			//isLodingステートをfalseに変更。
-			this.isLoding = false;
+			//isLoadingステートをfalseに変更。
+			this.isLoading = false;
 		}
 	}
 })

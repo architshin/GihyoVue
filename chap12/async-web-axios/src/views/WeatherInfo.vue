@@ -13,7 +13,7 @@ const weatherStore = useWeatherStore();
 weatherStore.recieveWeatherInfo(props.id);
 const isLoading = computed(
 	(): boolean => {
-		return weatherStore.isLoding;
+		return weatherStore.isLoading;
 	}
 );
 const selectedCity = computed(
