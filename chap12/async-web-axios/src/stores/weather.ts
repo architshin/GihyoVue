@@ -49,7 +49,7 @@ export const useWeatherStore = defineStore({
 		async recieveWeatherInfo(id: string) {
 			this.selectedCity = this.cityList.get(id) as City;
 			//アクセス先URLの基本部分の変数を用意。
-			const weatherinfoUrl = "http://api.openweathermap.org/data/2.5/weather";
+			const weatherInfoUrl = "http://api.openweathermap.org/data/2.5/weather";
 			//クエリパラメータの元データとなるオブジェクトリテラルを用意。
 			const params:{
 				lang: string,
@@ -67,7 +67,7 @@ export const useWeatherStore = defineStore({
 			//クエリパラメータを生成。
 			const queryParams = new URLSearchParams(params);
 			//実際にアクセスするURLを生成。
-			const urlFull = `${weatherinfoUrl}?${queryParams}`;
+			const urlFull = `${weatherInfoUrl}?${queryParams}`;
 			//URLに非同期でアクセスしてデータを取得。
 			const response = await axios.get(urlFull);
 			// console.log(response);
