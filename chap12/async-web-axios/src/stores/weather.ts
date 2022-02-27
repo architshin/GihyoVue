@@ -59,8 +59,8 @@ export const useWeatherStore = defineStore({
 			{
 				//言語設定のクエリパラメータ
 				lang: "ja",
-				//都市名を表すクエリパラメータ。
-				q: "Himeji",
+				//都市を表すクエリパラメータ。
+				q: this.selectedCity.q,
 				//APIキーのクエリパラメータ。ここに各自の文字列を記述する!!
 				appId: "913136635cfa3182bbe18e34ffd44849"
 			}

@@ -58,8 +58,8 @@ export const useWeatherStore = defineStore({
 			{
 				//言語設定のクエリパラメータ
 				lang: "ja",
-				//都市名を表すクエリパラメータ。
-				q: "Himeji",
+				//都市を表すクエリパラメータ。
+				q: this.selectedCity.q,
 				//APIキーのクエリパラメータ。ここに各自の文字列を記述する!!
 				appId: "913136635cfa3182bbe18e34ffd44849"
 			}
@@ -69,6 +69,7 @@ export const useWeatherStore = defineStore({
 			const urlFull = `${weatherinfoUrl}?${queryParams}`;
 			//URLに非同期でアクセスしてデータを取得。
 			const response = await fetch(urlFull);
+			// console.log(response);
 			//取得したデータを非同期でJSONに変換。
 			const weatherInfoJSON = await response.json();
 			// console.log(weatherInfoJSON);
