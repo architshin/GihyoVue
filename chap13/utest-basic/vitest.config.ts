@@ -1,6 +1,6 @@
-import {fileURLToPath, URL} from "url";
 import {defineConfig} from "vite";
 import Vue from "@vitejs/plugin-vue";
+import {fileURLToPath, URL} from "url";
 
 export default defineConfig({
 	plugins: [
