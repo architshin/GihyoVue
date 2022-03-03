@@ -1,3 +1,34 @@
+<script setup lang="ts">
+import {ref, computed} from "vue";
+
+interface Props {
+	id: number;
+	name: string;
+	email: string;
+	points: number;
+	note?: string;
+}
+
+interface Emits {
+	(event: "incrementPoint", id: number): void;
+}
+const props = defineProps<Props>();
+const emits = defineEmits<Emits>();
+
+const localNote = computed(
+	(): string => {
+		let localNote = props.note;
+		if(localNote == undefined) {
+			localNote = "--";
+		}
+		return localNote;
+	}
+);
+const pointUp = (): void => {
+	emits("incrementPoint", props.id);
+}
+</script>
+
 <template>
 	<section class="box">
 		<h4>{{name}}さんの情報</h4>
@@ -14,41 +45,6 @@
 		<button v-on:click="pointUp">ポイント加算</button>
 	</section>
 </template>
-
-<script lang="ts">
-import {defineComponent, ref, computed} from "vue";
-
-export default defineComponent({
-	name: "OneMember",
-	props: {
-		id: Number,
-		name: String,
-		email: String,
-		points: Number,
-		note: String
-	},
-	setup(props, context) {
-		const localPoints = ref(props.points);
-		const localNote = computed(
-			(): string => {
-				let localNote = props.note;
-				if(localNote == undefined) {
-					localNote = "--";
-				}
-				return localNote;
-			}
-		);
-		const pointUp = (): void => {
-			context.emit("incrementPoint", props.id);
-		}
-		return {
-			localPoints,
-			localNote,
-			pointUp
-		}
-	}
-});
-</script>
 
 <style scoped>
 .box {
