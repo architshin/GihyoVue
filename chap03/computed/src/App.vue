@@ -17,7 +17,7 @@ const area = computed(
 // 	(): number => radius.value * radius.value * PI.value
 // );
 // const area = computed(
-// 	function() {
+// 	function(): number {
 // 		return radius.value * radius.value * PI.value;
 // 	}
 // );
