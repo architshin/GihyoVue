@@ -2,6 +2,7 @@
 import {defineComponent} from "vue";
 
 export default defineComponent({
+	name: "App",
 	data() {
 		return {
 			height: Math.round(Math.random() * 10),
