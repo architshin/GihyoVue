@@ -1,12 +1,8 @@
-<template>
-	<p>縦が{{height}}、横が{{width}}の長方形の面積は{{area}}</p>
-	<button v-on:click="change">値を変更</button>
-</template>
-
 <script lang="ts">
 import {defineComponent} from "vue";
 
 export default defineComponent({
+	name: "App",
 	data() {
 		return {
 			height: Math.round(Math.random() * 10),
@@ -29,3 +25,8 @@ export default defineComponent({
 	}
 });
 </script>
+
+<template>
+	<p>縦が{{height}}、横が{{width}}の長方形の面積は{{area}}</p>
+	<button v-on:click="change">値を変更</button>
+</template>
