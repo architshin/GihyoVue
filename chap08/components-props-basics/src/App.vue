@@ -1,24 +1,16 @@
+<script setup lang="ts">
+import OneInfo from "./components/OneInfo.vue";
+</script>
+
 <template>
-	<h1>Props基礎</h1>
+	<h1>プロップス基礎</h1>
 	<section>
 		<h2>属性に直接記述</h2>
 		<OneInfo
-			title="propsの利用"
-			content="子コンポーネントにデータを渡すにはpropsを利用する。"/>
+			title="プロップスの利用"
+			content="子コンポーネントにデータを渡すにはプロップスを利用する。"/>
 	</section>
 </template>
-
-<script lang="ts">
-import {defineComponent} from "vue";
-import OneInfo from "./components/OneInfo.vue";
-
-export default defineComponent({
-	name: "App",
-	components: {
-		OneInfo
-	},
-});
-</script>
 
 <style>
 section {
