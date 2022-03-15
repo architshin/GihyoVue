@@ -1,52 +1,50 @@
+<script setup lang="ts">
+import {computed, inject} from "vue";
+import type {Member} from "../interfaces";
+
+//プロップスインターフェースの定義。
+interface Props {
+	id: number;
+}
+//プロップスオブジェクトの設定。
+const props = defineProps<Props>();
+//会員情報リストをインジェクト。
+const memberList = inject("memberList") as Map<number, Member>;
+//該当する会員情報の取得。
+const member = computed(
+	(): Member => {
+		return memberList.get(props.id) as Member;
+	}
+);
+//noteプロップスを加工する算出プロパティ。
+const localNote = computed(
+	(): string => {
+		let localNote = member.value.note;
+		if(localNote == undefined) {
+			localNote = "--";
+		}
+		return localNote;
+	}
+);
+</script>
+
 <template>
 	<section class="box">
-		<h4>{{name}}さんの情報</h4>
+		<h4>{{member.name}}さんの情報</h4>
 		<dl>
 			<dt>ID</dt>
 			<dd>{{id}}</dd>
 			<dt>メールアドレス</dt>
-			<dd>{{email}}</dd>
+			<dd>{{member.email}}</dd>
 			<dt>保有ポイント</dt>
 			<dd>
-				<input type="number" v-model.number="points">
+				<input type="number" v-model.number="member.points">
 			</dd>
 			<dt>備考</dt>
 			<dd>{{localNote}}</dd>
 		</dl>
 	</section>
 </template>
-
-<script lang="ts">
-import {defineComponent, computed, toRefs, inject} from "vue";
-import {Member} from "../interfaces";
-
-export default defineComponent({
-	name: "OneMember",
-	props: {
-		id: {
-			type: Number,
-			required: true
-		}
-	},
-	setup(props) {
-		const memberList = inject("memberList") as Map<number, Member>;
-		const member = memberList.get(props.id) as Member;
-		const localNote = computed(
-			(): string => {
-				let localNote = member.note;
-				if(localNote == undefined) {
-					localNote = "--";
-				}
-				return localNote;
-			}
-		);
-		return {
-			...toRefs(member),
-			localNote
-		}
-	}
-});
-</script>
 
 <style scoped>
 .box {

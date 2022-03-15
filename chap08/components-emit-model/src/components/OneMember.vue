@@ -1,3 +1,43 @@
+<script setup lang="ts">
+import {computed} from "vue";
+
+//プロップスインターフェースの定義。
+interface Props {
+	id: number;
+	name: string;
+	email: string;
+	points: number;
+	note?: string;
+}
+
+//エミットインターフェースの定義。
+interface Emits {
+	(event: "update:points", points: number): void;
+}
+
+//プロップスオブジェクトの設定。
+const props = defineProps<Props>();
+//エミットの設定。
+const emit = defineEmits<Emits>();
+
+//noteプロップスを加工する算出プロパティ。
+const localNote = computed(
+	(): string => {
+		let localNote = props.note;
+		if(localNote == undefined) {
+			localNote = "--";
+		}
+		return localNote;
+	}
+);
+//［ポイント加算］ボタンをクリックした時のメソッド。
+const onInput = (event: Event): void => {
+	const element = event.target as HTMLInputElement;
+	const inputPoints = Number(element.value);
+	emit("update:points", inputPoints);
+}
+</script>
+
 <template>
 	<section class="box">
 		<h4>{{name}}さんの情報</h4>
@@ -15,43 +55,6 @@
 		</dl>
 	</section>
 </template>
-
-<script lang="ts">
-import {defineComponent, ref, computed} from "vue";
-
-export default defineComponent({
-	name: "OneMember",
-	props: {
-		id: Number,
-		name: String,
-		email: String,
-		points: Number,
-		note: String
-	},
-	setup(props, context) {
-		const localPoints = ref(props.points);
-		const localNote = computed(
-			(): string => {
-				let localNote = props.note;
-				if(localNote == undefined) {
-					localNote = "--";
-				}
-				return localNote;
-			}
-		);
-		const onInput = (event: Event): void => {
-			const element = event.target as HTMLInputElement;
-			const inputPoints = Number(element.value);
-			context.emit("update:points", inputPoints);
-		}
-		return {
-			localPoints,
-			localNote,
-			onInput
-		}
-	}
-});
-</script>
 
 <style scoped>
 .box {

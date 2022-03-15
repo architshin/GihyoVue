@@ -1,23 +1,15 @@
+<script setup lang="ts">
+import {ref} from "vue";
+
+const name = ref("名無し");
+</script>
+
 <template>
 	<section>
 		<p>{{name}}さんですね!</p>
 		<input type="text" v-model="name">
 	</section>
 </template>
-
-<script lang="ts">
-import {defineComponent, ref} from "vue";
-
-export default defineComponent({
-	name: "WithModel",
-	setup() {
-		const name = ref("名無し");
-		return {
-			name
-		};
-	}
-});
-</script>
 
 <style scoped>
 section {
