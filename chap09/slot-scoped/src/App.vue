@@ -1,3 +1,7 @@
+<script setup lang="ts">
+import OneSection from "./components/OneSection.vue";
+</script>
+
 <template>
 	<section>
 		<OneSection>
@@ -16,15 +20,3 @@
 		<!-- <OneSection/> -->
 	</section>
 </template>
-
-<script lang="ts">
-import {defineComponent} from "vue";
-import OneSection from "./components/OneSection.vue";
-
-export default defineComponent({
-	name: "App",
-	components: {
-		OneSection
-	},
-});
-</script>
