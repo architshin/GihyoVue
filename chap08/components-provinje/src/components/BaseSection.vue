@@ -1,3 +1,22 @@
+<script setup lang="ts">
+import {computed, inject} from "vue";
+import OneMember from "./OneMember.vue";
+import type {Member} from "../interfaces";
+
+//会員情報リストをインジェクト。
+const memberList = inject("memberList") as Map<number, Member>;
+//保有ポイントの合計の算出プロパティ。
+const totalPoints = computed(
+	(): number => {
+		let total = 0;
+		for(const member of memberList.values()) {
+			total += member.points;
+		}
+		return total;
+	}
+);
+</script>
+
 <template>
 	<section>
 		<h1>会員リスト</h1>
@@ -8,35 +27,6 @@
 			v-bind:id="id"/>
 	</section>
 </template>
-
-<script lang="ts">
-import {defineComponent, computed, inject} from "vue";
-import OneMember from "./OneMember.vue";
-import {Member} from "../interfaces";
-
-export default defineComponent({
-	name: "BaseSection",
-	components: {
-		OneMember
-	},
-	setup() {
-		const memberList = inject("memberList") as Map<number, Member>;
-		const totalPoints = computed(
-			(): number => {
-				let total = 0;
-				for(const member of memberList.values()) {
-					total += member.points;
-				}
-				return total;
-			}
-		);
-		return {
-			memberList,
-			totalPoints
-		}
-	}
-});
-</script>
 
 <style scoped>
 section {
