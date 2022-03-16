@@ -1,3 +1,10 @@
+<script setup lang="ts">
+interface Props {
+	tag: string;
+}
+defineProps<Props>();
+</script>
+
 <template>
 	<section class="box">
 		{{tag}}
@@ -5,17 +12,6 @@
 	<section class="box" v-html="tag">
 	</section>
 </template>
-
-<script lang="ts">
-import {defineComponent} from "vue";
-
-export default defineComponent({
-	name: "OneSection",
-	props: {
-		tag: String
-	}
-});
-</script>
 
 <style>
 .box {

@@ -1,3 +1,9 @@
+<script setup lang="ts">
+import {ref} from "vue";
+
+const memberTypeSelect = ref(1);
+</script>
+
 <template>
 	<select v-model="memberTypeSelect">
 		<option value="1">通常会員</option>
@@ -7,17 +13,3 @@
 	<br>
 	<p>選択されたリスト: {{memberTypeSelect}}</p>
 </template>
-
-<script lang="ts">
-import {defineComponent, ref} from "vue";
-
-export default defineComponent({
-	name: "Select",
-	setup() {
-		const memberTypeSelect = ref(1);
-		return {
-			memberTypeSelect
-		}
-	}
-});
-</script>

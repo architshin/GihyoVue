@@ -1,3 +1,12 @@
+<script setup lang="ts">
+import {reactive} from "vue";
+
+const memberInfo = reactive({
+	name: "田中太郎",
+	state: "問題ありません。"
+});
+</script>
+
 <template>
 	<section>
 		<slot v-bind:memberInfo="memberInfo">
@@ -7,20 +16,3 @@
 		</slot>
 	</section>
 </template>
-
-<script lang="ts">
-import {defineComponent, reactive} from "vue";
-
-export default defineComponent({
-	name: "OneSection",
-	setup() {
-		const memberInfo = reactive({
-			name: "田中太郎",
-			state: "問題ありません。"
-		});
-		return {
-			memberInfo
-		}
-	}
-});
-</script>

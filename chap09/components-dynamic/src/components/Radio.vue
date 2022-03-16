@@ -1,3 +1,9 @@
+<script setup lang="ts">
+import {ref} from "vue";
+
+const memberType = ref(1);
+</script>
+
 <template>
 	<label>
 		<input type="radio" name="memberType" value="1" v-model="memberType">
@@ -14,17 +20,3 @@
 	<br>
 	<p>選択されたラジオボタン: {{memberType}}</p>
 </template>
-
-<script lang="ts">
-import {defineComponent, ref} from "vue";
-
-export default defineComponent({
-	name: "Radio",
-	setup() {
-		const memberType = ref(1);
-		return {
-			memberType
-		}
-	}
-});
-</script>
