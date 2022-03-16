@@ -1,26 +1,22 @@
+<script setup lang="ts">
+import {reactive, provide} from "vue";
+import {RouterView} from "vue-router";
+import type {Member} from "@/interfaces";
+
+const memberList = new Map<number, Member>();
+memberList.set(33456, {id: 33456, name: "田中太郎", email: "bow@example.com", points: 35, note: "ちょ〜イケメン。"});
+memberList.set(47783, {id: 47783, name: "鈴木二郎", email: "mue@example.com", points: 53});
+provide("memberList", reactive(memberList));
+</script>
+
 <template>
 	<header>
 		<h1>Vue Routerサンプル</h1>
 	</header>
 	<main>
-		<router-view/>
+		<RouterView/>
 	</main>
 </template>
-
-<script lang="ts">
-import {defineComponent, reactive, provide} from "vue";
-import {Member} from "./interfaces";
-
-export default defineComponent({
-	name: "App",
-	setup() {
-		const memberList = new Map<number, Member>();
-		memberList.set(33456, {id: 33456, name: "田中太郎", email: "bow@example.com", points: 35, note: "ちょ〜イケメン。"});
-		memberList.set(47783, {id: 47783, name: "鈴木二郎", email: "mue@example.com", points: 53});
-		provide("memberList", reactive(memberList));
-	}
-});
-</script>
 
 <style>
 main {

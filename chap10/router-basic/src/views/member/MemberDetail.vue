@@ -1,16 +1,42 @@
+<script setup lang="ts">
+import {inject, computed} from "vue";
+import {RouterLink} from "vue-router";
+import type {Member} from "@/interfaces";
+
+interface Props {
+	id: number;
+}
+const props = defineProps<Props>();
+const memberList = inject("memberList") as Map<number, Member>;
+const member = computed(
+	(): Member => {
+		return memberList.get(props.id) as Member;
+	}
+);
+const localNote = computed(
+	(): string => {
+		let localNote = "--";
+		if(member.value.note != undefined) {
+			localNote = member.value.note;
+		}
+		return localNote;
+	}
+);
+</script>
+
 <template>
 	<h1>会員管理</h1>
 	<nav id="breadcrumbs">
 		<ul>
 			<li>
-				<router-link v-bind:to="{name: 'Top'}">
+				<RouterLink v-bind:to="{name: 'AppTop'}">
 					TOP
-				</router-link>
+				</RouterLink>
 			</li>
 			<li>
-				<router-link v-bind:to="{name: 'MemberList'}">
+				<RouterLink v-bind:to="{name: 'MemberList'}">
 					会員リスト
-				</router-link>
+				</RouterLink>
 			</li>
 			<li>会員詳細情報</li>
 		</ul>
@@ -31,35 +57,3 @@
 		</dl>
 	</section>
 </template>
-
-<script lang="ts">
-import {defineComponent, inject, computed} from "vue";
-import {Member} from "../../interfaces";
-
-export default defineComponent({
-	name: "MemberDetail",
-	props: {
-		id: {
-			type: Number,
-			required: true
-		}
-	},
-	setup(props) {
-		const memberList = inject("memberList") as Map<number, Member>;
-		const member = memberList.get(props.id) as Member;
-		const localNote = computed(
-			(): string => {
-				let localNote = "--";
-				if(member.note != undefined) {
-					localNote = member.note;
-				}
-				return localNote;
-			}
-		);
-		return {
-			member,
-			localNote
-		};
-	}
-});
-</script>
