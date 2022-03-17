@@ -1,44 +1,39 @@
+<script setup lang="ts">
+import {inject} from "vue";
+import {RouterView, RouterLink} from "vue-router";
+import type {Member} from "@/interfaces";
+
+const memberList = inject("memberList") as Map<number, Member>;
+</script>
+
 <template>
 	<h1>会員管理</h1>
 	<nav id="breadcrumbs">
 		<ul>
 			<li>
-				<router-link v-bind:to="{name: 'Top'}">TOP</router-link>
+				<RouterLink v-bind:to="{name: 'AppTop'}">
+					TOP
+				</RouterLink>
 			</li>
 			<li>会員リスト</li>
 		</ul>
 	</nav>
 	<section>
+		<h2>会員リスト</h2>
+		<p>
+			新規登録は<router-link v-bind:to="{name: 'MemberAdd'}">こちら</router-link>から
+		</p>
 		<section>
-			<h2>会員リスト</h2>
-			<p>
-				新規登録は<router-link v-bind:to="{name: 'MemberAdd'}">こちら</router-link>から
-			</p>
 			<ul>
 				<li
 					v-for="[id, member] in memberList"
 					v-bind:key="id">
-					<router-link v-bind:to="{name: 'MemberDetail', params: {id: id}}">
+					<RouterLink v-bind:to="{name: 'MemberDetail', params: {id: id}}">
 						IDが{{id}}の{{member.name}}さん
-					</router-link>
+					</RouterLink>
 				</li>
 			</ul>
 		</section>
-		<router-view/>
+		<RouterView/>
 	</section>
 </template>
-
-<script lang="ts">
-import {defineComponent, inject} from "vue";
-import {Member} from "../../interfaces";
-
-export default defineComponent({
-	name: "MemberList",
-	setup() {
-		const memberList = inject("memberList") as Map<number, Member>;
-		return {
-			memberList
-		};
-	}
-});
-</script>
