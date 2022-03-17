@@ -1,45 +1,46 @@
-import {createRouter, createWebHistory, RouteRecordRaw} from "vue-router";
-import Top from "../views/Top.vue";
+import {createRouter, createWebHistory} from "vue-router";
+import type {RouteRecordRaw} from "vue-router";
+import AppTop from "@/views/AppTop.vue";
 
-const routes: Array<RouteRecordRaw> = [
+const routeSettings: RouteRecordRaw[] = [
 	{
 		path: "/",
-		name: "Top",
-		component: Top
+		name: "AppTop",
+		component: AppTop
 	},
 	{
 		path: "/member/search/:name/:points",
 		name: "SeveralParams",
 		component: () => {
-			return import("../views/ParamsViewer.vue");
+			return import("@/views/ParamsViewer.vue");
 		}
 	},
 	{
 		path: "/member/show/:name/:points?",
 		name: "OptionalParams",
 		component: () => {
-			return import("../views/ParamsViewer.vue");
+			return import("@/views/ParamsViewer.vue");
 		}
 	},
 	{
 		path: "/member/call/:id*",
 		name: "Repeatable0Params",
 		component: () => {
-			return import("../views/ParamsViewer.vue");
+			return import("@/views/ParamsViewer.vue");
 		}
 	},
 	{
 		path: "/member/tell/:id+",
 		name: "Repeatable1Params",
 		component: () => {
-			return import("../views/ParamsViewer.vue");
+			return import("@/views/ParamsViewer.vue");
 		}
 	},
 	{
 		path: "/member/pull/:id(\\d{5})",
 		name: "RegexpParams",
 		component: () => {
-			return import("../views/ParamsViewer.vue");
+			return import("@/views/ParamsViewer.vue");
 		}
 	},
 	{
@@ -58,12 +59,19 @@ const routes: Array<RouteRecordRaw> = [
 				params: {id: to.params.id} 
 			}
 		}
+	},
+	{
+		path: "/:pathMatch(.*)*",
+		name: "NotFound",
+		component: () => {
+			return import("@/views/NotFound.vue");
+		}
 	}
 ]
 
 const router = createRouter({
-	history: createWebHistory(process.env.BASE_URL),
-	routes
+	history: createWebHistory(import.meta.env.BASE_URL),
+	routes: routeSettings
 })
 
 export default router
