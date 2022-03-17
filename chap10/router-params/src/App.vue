@@ -1,19 +1,15 @@
+<script setup lang="ts">
+import {RouterView} from "vue-router";
+</script>
+
 <template>
 	<header>
 		<h1>ルートパラメータサンプル</h1>
 	</header>
 	<main>
-		<router-view/>
+		<RouterView/>
 	</main>
 </template>
-
-<script lang="ts">
-import {defineComponent} from "vue";
-
-export default defineComponent({
-	name: "App",
-});
-</script>
 
 <style>
 main {
