@@ -1,21 +1,22 @@
-import {createRouter, createWebHistory, RouteRecordRaw} from "vue-router";
-import Top from "../views/Top.vue";
-import Side from "../views/Side.vue";
+import {createRouter, createWebHistory} from "vue-router";
+import type {RouteRecordRaw} from "vue-router";
+import AppTop from "@/views/AppTop.vue";
+import Sub from "@/views/Sub.vue";
 
-const routes: Array<RouteRecordRaw> = [
+const routeSettings: RouteRecordRaw[] = [
 	{
 		path: "/",
-		name: "Top",
+		name: "AppTop",
 		components: {
-			default: Top,
-			sidebar: Side
+			default: AppTop,
+			sub: Sub
 		}
 	}
 ]
 
 const router = createRouter({
-	history: createWebHistory(process.env.BASE_URL),
-	routes
+	history: createWebHistory(import.meta.env.BASE_URL),
+	routes: routeSettings
 })
 
 export default router
