@@ -1,11 +1,12 @@
-import {createRouter, createWebHistory, RouteRecordRaw} from "vue-router";
-import Top from "../views/Top.vue";
+import {createRouter, createWebHistory} from "vue-router";
+import type {RouteRecordRaw} from "vue-router";
+import AppTop from "@/views/AppTop.vue";
 
-const routes: Array<RouteRecordRaw> = [
+const routeSettings: RouteRecordRaw[] = [
 	{
 		path: "/",
-		name: "Top",
-		component: Top,
+		name: "AppTop",
+		component: AppTop,
 		beforeEnter: (to, from) => {
 			console.log(`RouteTop#beforeEnter: to=${to.fullPath};from=${from.fullPath}`);
 		}
@@ -23,9 +24,9 @@ const routes: Array<RouteRecordRaw> = [
 ]
 
 const router = createRouter({
-	history: createWebHistory(process.env.BASE_URL),
-	routes
-});
+	history: createWebHistory(import.meta.env.BASE_URL),
+	routes: routeSettings
+})
 
 router.beforeEach(
 	(to, from) => {
