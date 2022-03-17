@@ -1,8 +1,8 @@
-import type {RouteRecordRaw} from "vue-router";
 import {createRouter, createWebHistory} from "vue-router";
+import type {RouteRecordRaw} from "vue-router";
 import CityList from "@/views/CityList.vue";
 
-const routes: Array<RouteRecordRaw> = [
+const routeSettings: RouteRecordRaw[] = [
 	{
 		path: "/",
 		name: "CityList",
@@ -20,7 +20,7 @@ const routes: Array<RouteRecordRaw> = [
 
 const router = createRouter({
 	history: createWebHistory(import.meta.env.BASE_URL),
-	routes
+	routes: routeSettings
 })
 
 export default router
