@@ -1,3 +1,29 @@
+<script setup lang="ts">
+import {ref, computed} from "vue";
+
+const msg = ref("こんにちは!世界");
+const msgTextRed = ref("red");
+const msgTextColor = ref("white");
+const msgBgColor = ref("black");
+const msgStyles = ref({
+		color: "white",
+		backgroundColor: "black"
+	});
+const msgStyles2 = ref({
+		fontSize: "24pt"
+	});
+const msgStyles3 = ref({
+		color: "pink",
+		fontSize: "24pt"
+	});
+const textSize = computed(
+	(): string => {
+		const size = Math.round(Math.random() * 25) + 10;
+		return `${size}pt`;
+	}
+);
+</script>
+
 <template>
 	<p v-bind:style="{color: msgTextRed}">
 		{{msg}}
@@ -27,43 +53,3 @@
 		{{msg}}
 	</p>
 </template>
-
-<script lang="ts">
-import {defineComponent, ref, computed} from "vue";
-
-export default defineComponent({
-	setup() {
-		const msg = ref("こんにちは!世界");
-		const msgTextRed = ref("red");
-		const msgTextColor = ref("white");
-		const msgBgColor = ref("black");
-		const msgStyles = ref({
-				color: "white",
-				backgroundColor: "black"
-			});
-		const msgStyles2 = ref({
-				fontSize: "24pt"
-			});
-		const msgStyles3 = ref({
-				color: "pink",
-				fontSize: "24pt"
-			});
-		const textSize = computed(
-			function(): string {
-				const size = Math.round(Math.random() * 25) + 10;
-				return `${size}pt`;
-			}
-		);
-		return {
-			msg,
-			msgTextRed,
-			msgTextColor,
-			msgBgColor,
-			msgStyles,
-			msgStyles2,
-			msgStyles3,
-			textSize
-		};
-	}
-});
-</script>
