@@ -1,3 +1,14 @@
+<script setup lang="ts">
+import {ref} from "vue";
+
+const inputNameBind = ref("しんちゃん");
+const inputNameOn = ref("ななし");
+const onInputName = (event: Event): void => {
+	const element = event.target as HTMLInputElement;
+	inputNameOn.value = element.value;
+}
+</script>
+
 <template>
 	<section>
 		<input type="text" v-bind:value="inputNameBind">
@@ -8,23 +19,3 @@
 		<p>{{inputNameOn}}</p>
 	</section>
 </template>
-
-<script lang="ts">
-import {defineComponent, ref} from "vue";
-
-export default defineComponent({
-	setup() {
-		const inputNameBind = ref("しんちゃん");
-		const inputNameOn = ref("ななし");
-		const onInputName = function(event: Event): void {
-			const element = event.target as HTMLInputElement;
-			inputNameOn.value = element.value;
-		}
-		return {
-			inputNameBind,
-			inputNameOn,
-			onInputName
-		};
-	}
-});
-</script>
