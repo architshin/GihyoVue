@@ -1,3 +1,11 @@
+<script setup lang="ts">
+import {ref} from "vue";
+
+const cocktailListInit: string[] = ["ホワイトレディ", "ブルーハワイ", "ニューヨーク"];
+const cocktailList = ref(cocktailListInit);
+// const cocktailList = ref(["ホワイトレディ", "ブルーハワイ", "ニューヨーク"]);
+</script>
+
 <template>
 	<ul>
 		<li
@@ -14,18 +22,3 @@
 		</li>
 	</ul>
 </template>
-
-<script lang="ts">
-import {defineComponent, ref} from "vue";
-
-export default defineComponent({
-	setup() {
-		const cocktailListInit: string[] = ["ホワイトレディ", "ブルーハワイ", "ニューヨーク"];
-		const cocktailList = ref(cocktailListInit);
-		// const cocktailList = ref(["ホワイトレディ", "ブルーハワイ", "ニューヨーク"]);
-		return {
-			cocktailList
-		};
-	}
-});
-</script>

@@ -1,3 +1,19 @@
+<script setup lang="ts">
+import {ref} from "vue";
+
+const cocktailListInit: string[] = ["ホワイトレディ", "ブルーハワイ", "ニューヨーク"];
+const cocktailList = ref(cocktailListInit);
+const changeCocktailList = (): void => {
+	cocktailList.value = ["バラライカ", "XYZ", "マンハッタン"];
+};
+const addCocktailList= (): void => {
+	cocktailList.value.push("ブルームーン");
+};
+const deleteFromCocktailList = (): void => {
+	cocktailList.value.pop();
+};
+</script>
+
 <template>
 	<ul>
 		<li
@@ -19,29 +35,3 @@
 		<button v-on:click="deleteFromCocktailList">削除</button>
 	</p>
 </template>
-
-<script lang="ts">
-import {defineComponent, ref} from "vue";
-
-export default defineComponent({
-	setup() {
-		const cocktailListInit: string[] = ["ホワイトレディ", "ブルーハワイ", "ニューヨーク"];
-		const cocktailList = ref(cocktailListInit);
-		const changeCocktailList = function(): void {
-			cocktailList.value = ["バラライカ", "XYZ", "マンハッタン"];
-		};
-		const addCocktailList= function(): void {
-			cocktailList.value.push("ブルームーン");
-		};
-		const deleteFromCocktailList = function(): void {
-			cocktailList.value.pop();
-		};
-		return {
-			cocktailList,
-			changeCocktailList,
-			addCocktailList,
-			deleteFromCocktailList
-		};
-	}
-});
-</script>

@@ -1,3 +1,13 @@
+<script setup lang="ts">
+import {computed} from "vue";
+
+const randomNumber = computed(
+	(): number => {
+		return Math.round(Math.random() * 100);
+	}
+);
+</script>
+
 <template>
 	<p>
 		点数は{{randomNumber}}点で
@@ -7,20 +17,3 @@
 		<span v-else>不可です。</span>
 	</p>
 </template>
-
-<script lang="ts">
-import {computed, defineComponent} from "vue";
-
-export default defineComponent({
-	setup() {
-		const randomNumber = computed(
-			function(): number {
-				return Math.round(Math.random() * 100);
-			}
-		);
-		return {
-			randomNumber
-		};
-	}
-});
-</script>

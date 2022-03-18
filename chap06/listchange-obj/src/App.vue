@@ -1,3 +1,23 @@
+<script setup lang="ts">
+import {ref} from "vue";
+
+const whiteLadyInit: {
+	id: number;
+	name: string;
+	price: number;
+	recipe: string;
+} = {
+	id: 2345,
+	name: "ホワイトレディ",
+	price: 1200,
+	recipe: "ジン30ml+コワントロー15ml+レモン果汁+15ml"
+};
+const whiteLady = ref(whiteLadyInit);
+const changeWhiteLadyPrice = (): void => {
+	whiteLady.value.price = 1500;
+};
+</script>
+
 <template>
 	<dl>
 		<template
@@ -12,31 +32,3 @@
 		<button v-on:click="changeWhiteLadyPrice">変更</button>
 	</p>
 </template>
-
-<script lang="ts">
-import {defineComponent, ref} from "vue";
-
-export default defineComponent({
-	setup() {
-		const whiteLadyInit: {
-			id: number;
-			name: string;
-			price: number;
-			recipe: string;
-		} = {
-			id: 2345,
-			name: "ホワイトレディ",
-			price: 1200,
-			recipe: "ジン30ml+コワントロー15ml+レモン果汁+15ml"
-		};
-		const whiteLady = ref(whiteLadyInit);
-		const changeWhiteLadyPrice = function(): void {
-			whiteLady.value.price = 1500;
-		};
-		return {
-			whiteLady,
-			changeWhiteLadyPrice
-		};
-	}
-});
-</script>
