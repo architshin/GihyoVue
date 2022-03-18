@@ -1,3 +1,18 @@
+<script setup lang="ts">
+import {computed} from "vue";
+
+const showOrNot = computed(
+	(): boolean => {
+		let showOrNot = false;
+		const rand = Math.round(Math.random() * 100);
+		if(rand >= 50) {
+			showOrNot = true;
+		}
+		return showOrNot;
+	}
+);
+</script>
+
 <template>
 	<section>
 		v-ifを利用
@@ -12,25 +27,3 @@
 		</p>
 	</section>
 </template>
-
-<script lang="ts">
-import {computed, defineComponent} from "vue";
-
-export default defineComponent({
-	setup() {
-		const showOrNot = computed(
-			function(): boolean {
-				let showOrNot = false;
-				const rand = Math.round(Math.random() * 100);
-				if(rand >= 50) {
-					showOrNot = true;
-				}
-				return showOrNot;
-			}
-		);
-		return {
-			showOrNot
-		};
-	}
-});
-</script>
