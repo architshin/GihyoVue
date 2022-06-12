@@ -30,7 +30,7 @@ const totalPoints = computed(
 
 <style scoped>
 section {
-	border: orange 1px solid;
+	border: orange 1px dashed;
 	margin: 10px;
 }
 </style>
