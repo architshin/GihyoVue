@@ -13,7 +13,7 @@ const name = ref("名無し");
 
 <style scoped>
 section {
-	border: orange 1px solid;
+	border: orange 1px dashed;
 	margin: 10px;
 }
 </style>
