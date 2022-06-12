@@ -24,7 +24,7 @@ const localNote = computed(
 		return localNote;
 	}
 );
-//［ポイント加算］ボタンをクリックした時のメソッド。
+//［ポイント加算］ボタンをクリックしたときのメソッド。
 const pointUp = (): void => {
 	// props.points++;
 	localPoints.value++;
