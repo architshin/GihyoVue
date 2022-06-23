@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import {ref, computed} from "vue";
 
-//プロップスインターフェースの定義。
+//Propsインターフェースの定義。
 interface Props {
 	id: number;
 	name: string;
@@ -9,7 +9,7 @@ interface Props {
 	points: number;
 	note?: string;
 }
-//プロップスオブジェクトの設定。
+//Propsオブジェクトの設定。
 const props = withDefaults(
 	defineProps<Props>(),
 	{note:  "--"}
