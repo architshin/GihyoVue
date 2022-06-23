@@ -3,12 +3,12 @@ import OneInfo from "./components/OneInfo.vue";
 </script>
 
 <template>
-	<h1>プロップス基礎</h1>
+	<h1>Props基礎</h1>
 	<section>
 		<h2>属性に直接記述</h2>
 		<OneInfo
-			title="プロップスの利用"
-			content="子コンポーネントにデータを渡すにはプロップスを利用する。"/>
+			title="Propsの利用"
+			content="子コンポーネントにデータを渡すにはPropsを利用する。"/>
 	</section>
 </template>
 
