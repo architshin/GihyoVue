@@ -16,7 +16,7 @@ interface Weather {
 </script>
 
 <template>
-	<h1>プロップス基礎</h1>
+	<h1>Props基礎</h1>
 	<section>
 		<h2>ループでコンポーネントを生成</h2>
 		<OneInfo
