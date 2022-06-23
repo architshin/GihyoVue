@@ -2,11 +2,11 @@
 import {computed, inject} from "vue";
 import type {Member} from "../interfaces";
 
-//プロップスインターフェースの定義。
+//Propsインターフェースの定義。
 interface Props {
 	id: number;
 }
-//プロップスオブジェクトの設定。
+//Propsオブジェクトの設定。
 const props = defineProps<Props>();
 //会員情報リストをインジェクト。
 const memberList = inject("memberList") as Map<number, Member>;
@@ -16,7 +16,7 @@ const member = computed(
 		return memberList.get(props.id) as Member;
 	}
 );
-//noteプロップスを加工する算出プロパティ。
+//Propsのnoteを加工する算出プロパティ。
 const localNote = computed(
 	(): string => {
 		let localNote = member.value.note;
