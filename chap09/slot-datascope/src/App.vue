@@ -8,7 +8,7 @@ const jiro = ref("鈴木二郎");
 
 <template>
 	<section>
-		<h2>スロットの利用</h2>
+		<h2>Slotの利用</h2>
 		<OneSection v-bind:name="taro">
 			<p>{{taro}}さんは連絡がつきません。</p>
 			<!-- <p>{{name}}さんは連絡がつきません。</p> -->
