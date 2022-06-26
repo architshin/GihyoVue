@@ -42,14 +42,14 @@ export const useMembersStore = defineStore({
 		return {
 			memberList: new Map<number, Member>(),
 			isLoading: true
-		}
+		};
 	},
 	getters: {
 		getById: (state) => {
 			return (id: number): Member => {
 				const member = state.memberList.get(id) as Member;
 				return member;
-			}
+			};
 		},
 		isMemberListEmpty: (state): boolean => {
 			return state.memberList.size == 0;
@@ -85,7 +85,7 @@ export const useMembersStore = defineStore({
 							//次のデータに同じ処理を実行。
 							cursor.continue();
 						}
-					}
+					};
 					//トランザクションが成功した場合の処理を登録。
 					transaction.oncomplete = () => {
 						//ステートにmemberListを格納。
@@ -94,13 +94,13 @@ export const useMembersStore = defineStore({
 						this.isLoading = false;
 						//非同期処理成功。Promise内の戻り値をtrueに。
 						resolve(true);
-					}
+					};
 					//トランザクションが失敗した場合の処理を登録。
 					transaction.onerror = (event) => {
 						//非同期処理失敗。エラーメッセージを格納。
 						console.log("ERROR: データ取得に失敗。", event);
 						reject(new Error("ERROR: データ取得に失敗。"));
-					}
+					};
 				}
 			);
 			return promise;
@@ -124,13 +124,13 @@ export const useMembersStore = defineStore({
 					transaction.oncomplete = () => {
 						//非同期処理成功。Promise内の戻り値をtrueに。
 						resolve(true);
-					}
+					};
 					//トランザクションが失敗した場合の処理を登録。
 					transaction.onerror = (event) => {
 						//非同期処理失敗。エラーメッセージを格納。
 						console.log("ERROR: データ登録に失敗。", event);
 						reject(new Error("ERROR: データ登録に失敗。"));
-					}
+					};
 				}
 			);
 			return promise;
