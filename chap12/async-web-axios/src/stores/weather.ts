@@ -62,7 +62,7 @@ export const useWeatherStore = defineStore({
 				//都市を表すクエリパラメータ。
 				q: this.selectedCity.q,
 				//APIキーのクエリパラメータ。ここに各自の文字列を記述する!!
-				appId: "913136635cfa3182bbe18e34ffd44849"
+				appId: "xxxxxxxxxxxx"
 			}
 			//クエリパラメータを生成。
 			const queryParams = new URLSearchParams(params);
