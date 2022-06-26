@@ -3,7 +3,7 @@ import {ref, watchEffect} from "vue";
 
 //カクテル番号のテンプレート変数を用意。
 const cocktailNo = ref(1);
-//カクテル番号に対応するカクテル情報の産出プロパティを用意。
+//カクテル番号に対応するカクテル情報のテンプレート変数を用意。
 const priceMsg = ref("");
 //watchEffectを設定。
 watchEffect(
