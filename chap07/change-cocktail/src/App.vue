@@ -10,7 +10,7 @@ cocktailDataListInit.set(4, {id: 4, name: "マティーニ", price: 1500});
 
 //カクテル番号のテンプレート変数を用意。
 const cocktailNo = ref(1);
-//カクテル番号に対応するカクテル情報の産出プロパティを用意。
+//カクテル番号に対応するカクテル情報の算出プロパティを用意。
 const priceMsg = computed(
 	(): string => {
 		//カクテル番号に該当するカクテルデータを取得。

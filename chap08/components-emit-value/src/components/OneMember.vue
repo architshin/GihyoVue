@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import {computed} from "vue";
 
-//プロップスインターフェースの定義。
+//Propsインターフェースの定義。
 interface Props {
 	id: number;
 	name: string;
@@ -10,17 +10,17 @@ interface Props {
 	note?: string;
 }
 
-//エミットインターフェースの定義。
+//Emitインターフェースの定義。
 interface Emits {
 	(event: "incrementPoint", id: number): void;
 }
 
-//プロップスオブジェクトの設定。
+//Propsオブジェクトの設定。
 const props = defineProps<Props>();
-//エミットの設定。
+//Emitの設定。
 const emit = defineEmits<Emits>();
 
-//noteプロップスを加工する算出プロパティ。
+//Propsのnoteを加工する算出プロパティ。
 const localNote = computed(
 	(): string => {
 		let localNote = props.note;

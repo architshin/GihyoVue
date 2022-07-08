@@ -15,7 +15,7 @@ const doubleCount = computed(
 );
 const onIncrementClick = () => {
 	counterStore.incrementCount();
-}
+};
 </script>
 
 <template>

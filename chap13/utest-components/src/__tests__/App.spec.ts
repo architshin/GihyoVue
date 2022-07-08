@@ -23,7 +23,7 @@ describe(
 			}
 		);
 		test(
-			"エミットメソッドのテスト",
+			"Emitメソッドのテスト",
 			async () => {
 				const options = {
 					global: {

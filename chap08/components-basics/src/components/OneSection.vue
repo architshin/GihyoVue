@@ -9,7 +9,7 @@
 
 <style>
 .box {
-	border: green 1px solid;
+	border: green 1px dashed;
 	margin: 10px;
 }
 </style>

@@ -13,7 +13,7 @@ const randomNumber = computed(
 		点数は{{randomNumber}}点
 		<template v-if="randomNumber >= 80">
 			で優です。
-			<span style="color: red;">素晴らしい!</span>
+			<span style="color: red;">すばらしい!</span>
 		</template>
 	</p>
 </template>

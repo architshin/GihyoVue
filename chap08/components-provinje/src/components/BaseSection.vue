@@ -3,7 +3,7 @@ import {computed, inject} from "vue";
 import OneMember from "./OneMember.vue";
 import type {Member} from "../interfaces";
 
-//会員情報リストをインジェクト。
+//会員情報リストをInject。
 const memberList = inject("memberList") as Map<number, Member>;
 //保有ポイントの合計の算出プロパティ。
 const totalPoints = computed(
@@ -30,7 +30,7 @@ const totalPoints = computed(
 
 <style scoped>
 section {
-	border: orange 1px solid;
+	border: orange 1px dashed;
 	margin: 10px;
 }
 </style>

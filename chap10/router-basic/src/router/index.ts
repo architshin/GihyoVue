@@ -35,11 +35,11 @@ const routeSettings: RouteRecordRaw[] = [
 			return import("@/views/member/MemberAdd.vue");
 		}
 	}
-]
+];
 
 const router = createRouter({
 	history: createWebHistory(import.meta.env.BASE_URL),
 	routes: routeSettings
-})
+});
 
-export default router
+export default router;

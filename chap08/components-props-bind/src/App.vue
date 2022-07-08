@@ -8,7 +8,7 @@ const propsContent = ref(rand);
 </script>
 
 <template>
-	<h1>プロップス基礎</h1>
+	<h1>Props基礎</h1>
 	<section>
 		<h2>テンプレート変数を利用</h2>
 		<OneInfo

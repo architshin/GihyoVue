@@ -6,7 +6,7 @@ describe(
 	"OneMember.vueのテスト",
 	() => {
 		test(
-			"備考データがある場合のプロップスのテスト",
+			"備考データがある場合のPropsのテスト",
 			() => {
 				const propsData = {
 					id: 22458,
@@ -27,7 +27,7 @@ describe(
 			}
 		);
 		test(
-			"備考データがない場合のプロップスのテスト",
+			"備考データがない場合のPropsのテスト",
 			() => {
 				const propsData = {
 					id: 55148,
@@ -45,7 +45,7 @@ describe(
 			}
 		);
 		test(
-			"［ポイント加算］ボタンクリックのテスト（エミットのテスト）",
+			"［ポイント加算］ボタンクリックのテスト（Emitのテスト）",
 			async () => {
 				const propsData = {
 					id: 22458,

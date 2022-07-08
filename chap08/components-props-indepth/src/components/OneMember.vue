@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import {ref, computed} from "vue";
 
-//プロップスインターフェースの定義。
+//Propsインターフェースの定義。
 interface Props {
 	id: number;
 	name: string;
@@ -9,12 +9,12 @@ interface Props {
 	points: number;
 	note?: string;
 }
-//プロップスオブジェクトの設定。
+//Propsオブジェクトの設定。
 const props = defineProps<Props>();
 
 //このコンポーネント内で利用するポイント数のテンプレート変数。
 const localPoints = ref(props.points);
-//noteプロップスを加工する算出プロパティ。
+//Propsのnoteを加工する算出プロパティ。
 const localNote = computed(
 	(): string => {
 		let localNote = props.note;
@@ -24,7 +24,7 @@ const localNote = computed(
 		return localNote;
 	}
 );
-//［ポイント加算］ボタンをクリックした時のメソッド。
+//［ポイント加算］ボタンをクリックしたときのメソッド。
 const pointUp = (): void => {
 	// props.points++;
 	localPoints.value++;
