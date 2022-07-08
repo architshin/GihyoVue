@@ -7,7 +7,7 @@ const radiusInit = Math.round(Math.random() * 10);
 const PI = ref(3.14);
 // 半径のテンプレート変数を用意。
 const radius = ref(radiusInit);
-// 円の面積の算出値を用意。
+// 円の面積の算出プロパティを用意。
 const area = computed(
 	(): number => {
 		return radius.value * radius.value * PI.value;
