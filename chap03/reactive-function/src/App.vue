@@ -6,7 +6,7 @@ const data = reactive({
 	PI: 3.14,
 	radius: Math.round(Math.random() * 10)
 });
-// 円の面積の算出値を用意。
+// 円の面積の算出プロパティを用意。
 const area = computed(
 	(): number => {
 		return data.radius * data.radius * data.PI;
